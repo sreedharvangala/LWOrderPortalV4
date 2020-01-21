@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="OrderStatus" alias="OrderStatus" created="2019-06-18T11:49:51" modified="2019-06-27T11:47:19" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="OrderStatusID" fieldName="OrderStatusID" label="OrderStatusID" sortOrder="1" sortType="Ascending" />
+    <column name="StatusSeq" fieldName="StatusSeq" label="Status Seq" />
+    <column name="StatusName" fieldName="StatusName" label="Status Name" />
+    <column name="Description" fieldName="Description" label="Description" />
+    <column name="Active" fieldName="Active" label="Active" />
+  </columns>
+</dataModel>

@@ -1,0 +1,5 @@
+﻿.BulkOrderStatus > .ui-btn:not(:hover):not(.app-selected):not(.ui-btn-active),
+.BulkOrderStatus > .ui-btn:not(:hover):not(.app-selected):not(.ui-btn-active) .app-frozen-spacer {
+    /* change this property */
+    background-color: #99ccff !important;
+}

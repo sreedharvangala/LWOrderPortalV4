@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.705
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "app", "app\", "{E670FE3C-A327-4A64-905A-D9A92D5A09C1}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_51344"
+		Debug.AspNetCompiler.PhysicalPath = "app\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51344\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_51344"
+		Release.AspNetCompiler.PhysicalPath = "app\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51344\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "51344"
+		SlnRelativePath = "app\"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code On Time Items", "Code On Time Items", "{B2C39D53-F3F3-4E33-8847-B8D58D92B2DD}"
+	ProjectSection(SolutionItems) = preProject
+		ClientLibrary.en-GB.txt = ClientLibrary.en-GB.txt
+		ClientLibrary.en-US.txt = ClientLibrary.en-US.txt
+		ClientLibrary.en.txt = ClientLibrary.en.txt
+		ClientLibrary.ms-MY.txt = ClientLibrary.ms-MY.txt
+		ClientLibrary.zh-SG.txt = ClientLibrary.zh-SG.txt
+		DataAquarium.Project.xml = DataAquarium.Project.xml
+		DataAquarium.Version.xml = DataAquarium.Version.xml
+		Sync.DESKTOP-91068-user.xml = Sync.DESKTOP-91068-user.xml
+		Sync.DESKTOP-HB3J331-MY-COMPUTER.xml = Sync.DESKTOP-HB3J331-MY-COMPUTER.xml
+		Sync.FINSOFT-CALVIN-Admin.xml = Sync.FINSOFT-CALVIN-Admin.xml
+		Sync.LAPTOP-6PT1KV72-bunga.xml = Sync.LAPTOP-6PT1KV72-bunga.xml
+		Sync.LAPTOP-7A9483LU-Dominic.xml = Sync.LAPTOP-7A9483LU-Dominic.xml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E670FE3C-A327-4A64-905A-D9A92D5A09C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E670FE3C-A327-4A64-905A-D9A92D5A09C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2D7D540-4542-4AC8-9403-02B53AEFE8B1}
+	EndGlobalSection
+EndGlobal

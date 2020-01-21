@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "app", "app\", "{E670FE3C-A327-4A64-905A-D9A92D5A09C1}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6"
+		ProjectReferences = "{96e8be16-ba2d-4866-ac1a-be1cce1f11bb}|ReportLibrary.dll;{0793275f-55c2-49a0-ac6d-75c28d4353ce}|SalesOrderEntry.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_51344"
+		Debug.AspNetCompiler.PhysicalPath = "app\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51344\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_51344"
+		Release.AspNetCompiler.PhysicalPath = "app\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51344\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "51344"
+		SlnRelativePath = "app\"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code On Time Items", "Code On Time Items", "{A663C6CB-6B7C-4014-A9E7-B2E625F9E8F2}"
+	ProjectSection(SolutionItems) = preProject
+		ClientLibrary.en-GB.txt = ClientLibrary.en-GB.txt
+		ClientLibrary.en-US.txt = ClientLibrary.en-US.txt
+		ClientLibrary.zh-SG.txt = ClientLibrary.zh-SG.txt
+		DataAquarium.Project.xml = DataAquarium.Project.xml
+		DataAquarium.Version.xml = DataAquarium.Version.xml
+		Sync.DESKTOP-HB3J331-MY-COMPUTER.xml = Sync.DESKTOP-HB3J331-MY-COMPUTER.xml
+		Sync.FINSOFT-CALVIN-Admin.xml = Sync.FINSOFT-CALVIN-Admin.xml
+		Sync.LAPTOP-6PT1KV72-bunga.xml = Sync.LAPTOP-6PT1KV72-bunga.xml
+		Sync.LAPTOP-7A9483LU-Dominic.xml = Sync.LAPTOP-7A9483LU-Dominic.xml
+		ClientLibrary.ms-MY.txt = ClientLibrary.ms-MY.txt
+		ClientLibrary.en.txt = ClientLibrary.en.txt
+		Sync.DESKTOP-91068-user.xml = Sync.DESKTOP-91068-user.xml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportLibrary", "ReportLibrary\ReportLibrary.csproj", "{96E8BE16-BA2D-4866-AC1A-BE1CCE1F11BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesOrderEntry", "SalesOrderEntry\SalesOrderEntry.csproj", "{0793275F-55C2-49A0-AC6D-75C28D4353CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E670FE3C-A327-4A64-905A-D9A92D5A09C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E670FE3C-A327-4A64-905A-D9A92D5A09C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E670FE3C-A327-4A64-905A-D9A92D5A09C1}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{E670FE3C-A327-4A64-905A-D9A92D5A09C1}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{96E8BE16-BA2D-4866-AC1A-BE1CCE1F11BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96E8BE16-BA2D-4866-AC1A-BE1CCE1F11BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96E8BE16-BA2D-4866-AC1A-BE1CCE1F11BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96E8BE16-BA2D-4866-AC1A-BE1CCE1F11BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0793275F-55C2-49A0-AC6D-75C28D4353CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0793275F-55C2-49A0-AC6D-75C28D4353CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0793275F-55C2-49A0-AC6D-75C28D4353CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0793275F-55C2-49A0-AC6D-75C28D4353CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6B9F7C1-9B4B-4416-8E95-A6655AFE63EA}
+	EndGlobalSection
+EndGlobal

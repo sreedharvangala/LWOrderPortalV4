@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="vwPart" alias="vwPart" created="2019-06-18T11:49:55" modified="2019-08-31T12:26:05" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="SysRowID" fieldName="SysRowID" label="SysRowID" primaryKey="true" />
+    <column name="Company" fieldName="Company" label="Company" />
+    <column name="PartNum" fieldName="PartNum" label="PartNum" sortOrder="1" sortType="Ascending" />
+    <column name="PartDescription" fieldName="PartDescription" label="PartDesc" />
+    <column name="IUM" fieldName="Ium" label="IUM" />
+    <column name="CtnConv" fieldName="CtnConv" label="CtnConv" />
+  </columns>
+</dataModel>

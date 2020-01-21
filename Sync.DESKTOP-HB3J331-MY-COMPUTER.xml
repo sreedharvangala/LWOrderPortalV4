@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?><logs><log type="Controllers"><c y="NodeSet" t="2019-06-18T11:52:54"><controllers />
+<insert type="controller">
+  <Name>Membership</Name>
+  <ConflictDetection>overwriteChanges</ConflictDetection>
+  <GenerateDataAccessObjects>false</GenerateDataAccessObjects>
+</insert></c><c y="NodeSet" t="2019-06-18T11:53:10"><controller name="Membership" />
+<copy>
+  <controller name="Users" />
+</copy></c><c y="NodeSet" t="2019-06-18T11:53:10"><controller name="Membership" />
+<copy>
+  <controller name="Roles" />
+</copy></c><c y="NodeSet" t="2019-06-18T11:54:11"><controller name="Membership" />
+<insert type="view">
+  <ViewId>View1</ViewId>
+  <Type>Form</Type>
+  <Legend>false</Legend>
+  <Label>Users And Roles</Label>
+  <ShowInSelector>true</ShowInSelector>
+  <ReportTemplate>false</ReportTemplate>
+</insert></c><c y="NodeSet" t="2019-06-18T11:54:27"><controller name="Membership" />
+<view id="View1" />
+<insert type="category">
+  <HeaderText>Users</HeaderText>
+</insert></c><c y="NodeSet" t="2019-06-18T11:54:50"><controller name="Membership" />
+<view id="View1" />
+<category id="c1" />
+<update>
+  <Tab>Users</Tab>
+</update></c><c y="NodeSet" t="2019-06-18T11:55:07"><controller name="Membership" />
+<view id="View1" />
+<insert type="category">
+  <HeaderText>Roles</HeaderText>
+  <Tab>Roles</Tab>
+</insert></c><c y="NodeSet" t="2019-06-18T11:55:11"><controller name="Membership" />
+<view id="View1" />
+<category id="c1" />
+<move>
+  <controller name="Membership" />
+  <field name="Users" />
+</move></c><c y="NodeSet" t="2019-06-18T11:55:13"><controller name="Membership" />
+<view id="View1" />
+<category id="c2" />
+<move>
+  <controller name="Membership" />
+  <field name="Roles" />
+</move></c><c y="NodeSet" t="2019-06-18T11:56:03"><controller name="Users" />
+<insert type="field">
+  <Name>Roles</Name>
+  <Type>String</Type>
+  <AllowNulls>true</AllowNulls>
+  <IsPrimaryKey>false</IsPrimaryKey>
+  <IsVirtual>false</IsVirtual>
+  <Computed>false</Computed>
+  <Calculated>false</Calculated>
+  <CausesCalculate>false</CausesCalculate>
+  <OnDemand>false</OnDemand>
+  <Label>Roles</Label>
+  <ReadOnly>false</ReadOnly>
+  <ShowInSummary>false</ShowInSummary>
+  <HtmlEncode>true</HtmlEncode>
+  <FormatOnClient>true</FormatOnClient>
+  <ItemsStyle>CheckBoxList</ItemsStyle>
+  <ItemsDataController>Roles</ItemsDataController>
+  <ItemsTargetController>UserRoles</ItemsTargetController>
+  <SearchOnStart>false</SearchOnStart>
+  <AutoSelect>false</AutoSelect>
+  <ItemsLetters>false</ItemsLetters>
+  <AllowQBE>true</AllowQBE>
+  <AllowSorting>true</AllowSorting>
+  <MaskType>None</MaskType>
+  <AllowLEV>false</AllowLEV>
+</insert></c><c y="NodeSet" t="2019-06-18T11:56:31"><controller name="Users" />
+<insert type="field">
+  <Name>Company</Name>
+  <Type>String</Type>
+  <AllowNulls>true</AllowNulls>
+  <IsPrimaryKey>false</IsPrimaryKey>
+  <IsVirtual>false</IsVirtual>
+  <Computed>false</Computed>
+  <Calculated>false</Calculated>
+  <CausesCalculate>false</CausesCalculate>
+  <OnDemand>false</OnDemand>
+  <Label>Company</Label>
+  <ReadOnly>false</ReadOnly>
+  <ShowInSummary>false</ShowInSummary>
+  <HtmlEncode>true</HtmlEncode>
+  <FormatOnClient>true</FormatOnClient>
+  <ItemsStyle>CheckBoxList</ItemsStyle>
+  <ItemsDataController>Company</ItemsDataController>
+  <ItemsTargetController>UsersCompany</ItemsTargetController>
+  <SearchOnStart>false</SearchOnStart>
+  <AutoSelect>false</AutoSelect>
+  <ItemsLetters>false</ItemsLetters>
+  <AllowQBE>true</AllowQBE>
+  <AllowSorting>true</AllowSorting>
+  <MaskType>None</MaskType>
+  <AllowLEV>false</AllowLEV>
+</insert></c><c y="NodeSet" t="2019-06-18T11:56:51"><controller name="Users" />
+<view id="createForm1" />
+<move>
+  <controller name="Users" />
+  <field name="Roles" />
+</move></c><c y="NodeSet" t="2019-06-18T11:56:51"><controller name="Users" />
+<view id="createForm1" />
+<move>
+  <controller name="Users" />
+  <field name="Company" />
+</move></c><c y="NodeSet" t="2019-06-18T12:16:39"><controller name="Users" />
+<insert type="rule">
+  <Type>Code</Type>
+  <CommandName>Insert|Update</CommandName>
+  <Phase>Execute</Phase>
+</insert></c><c y="NodeSet" t="2019-06-18T12:33:25"><controller name="Users" />
+<view id="grid1" />
+<copy>
+  <controller name="Users" />
+  <field name="Roles" />
+</copy></c><c y="NodeSet" t="2019-06-18T12:33:25"><controller name="Users" />
+<view id="grid1" />
+<copy>
+  <controller name="Users" />
+  <field name="Company" />
+</copy></c><c y="NodeSet" t="2019-06-18T12:33:30"><controller name="Users" />
+<view id="editForm1" />
+<copy>
+  <controller name="Users" />
+  <field name="Roles" />
+</copy></c><c y="NodeSet" t="2019-06-18T12:33:30"><controller name="Users" />
+<view id="editForm1" />
+<copy>
+  <controller name="Users" />
+  <field name="Company" />
+</copy></c><c y="NodeSet" t="2019-06-18T14:24:37"><controller name="OrderHed" />
+<field name="CustSysRowID" />
+<update>
+  <ItemsStyle>Lookup</ItemsStyle>
+  <ItemsDataController>Customer</ItemsDataController>
+  <ItemsDataValueField>SysRowID</ItemsDataValueField>
+  <ItemsDataTextField>CustID</ItemsDataTextField>
+</update></c><c y="NodeSet" t="2019-06-18T14:28:56"><controller name="OrderHed" />
+<field name="ShipToSysRowID" />
+<update>
+  <ItemsStyle>Lookup</ItemsStyle>
+  <ItemsDataController>ShipTo</ItemsDataController>
+  <ItemsDataValueField>SysRowID</ItemsDataValueField>
+  <ItemsDataTextField>Name</ItemsDataTextField>
+</update></c><c y="NodeSet" t="2019-06-18T14:29:41"><controller name="OrderHed" />
+<field name="ShipToSysRowID" />
+<update>
+  <Copy>ShipToName=Name</Copy>
+</update></c><c y="NodeSet" t="2019-06-18T14:30:31"><controller name="OrderHed" />
+<field name="CustSysRowID" />
+<update>
+  <Copy>CustomerName=Name</Copy>
+</update></c><c y="NodeSet" t="2019-06-18T14:31:57"><controller name="OrderHed" />
+<field name="CustSysRowID" />
+<update>
+  <Copy>CustomerName=Name, CustNum=CustNum, CustID=CustID</Copy>
+</update></c><c y="NodeSet" t="2019-06-18T14:34:30"><controller name="OrderHed" />
+<copy>
+  <controller name="OrderDtl" />
+</copy></c><c y="NodeSet" t="2019-06-18T14:35:02"><controller name="OrderHed" />
+<view id="editForm1" />
+<move>
+  <controller name="OrderHed" />
+  <field name="OrderDtl" />
+</move></c><c y="NodeSet" t="2019-06-18T14:35:06"><controller name="OrderHed" />
+<view id="createForm1" />
+<move>
+  <controller name="OrderHed" />
+  <field name="OrderDtl" />
+</move></c><c y="NodeSet" t="2019-06-18T14:35:08"><controller name="OrderHed" />
+<view id="createForm1" />
+<dataField fieldName="OrderDtl" />
+<update>
+  <Hidden>false</Hidden>
+  <DataViewShowInSummary>false</DataViewShowInSummary>
+</update></c><c y="NodeSet" t="2019-06-20T10:08:05"><controller name="OrderHed" />
+<view id="grid1" />
+<insert type="style">
+  <CssClass>BulkOrderStatus</CssClass>
+  <Test>[BulkOrder] == 1</Test>
+</insert></c><c y="NodeSet" t="2019-06-20T10:18:21"><controller name="Customer" />
+<copy>
+  <controller name="Customer" />
+  <view id="grid1" />
+</copy></c><c y="NodeSet" t="2019-06-20T10:18:41"><controller name="Customer" />
+<view id="v100" />
+<update>
+  <ReportTemplate>true</ReportTemplate>
+</update></c><c y="NodeSet" t="2019-06-20T10:20:38"><controller name="Customer" />
+<insert type="actionGroup">
+  <Scope>ActionColumn</Scope>
+  <Flat>false</Flat>
+</insert></c><c y="NodeSet" t="2019-06-20T10:21:05"><controller name="Customer" />
+<actionGroup id="ag100" />
+<insert type="action">
+  <CommandName>Report</CommandName>
+  <CommandArgument>blank</CommandArgument>
+  <CausesValidation>true</CausesValidation>
+</insert></c><c y="NodeSet" t="2019-06-20T10:21:31"><controller name="Customer" />
+<insert type="rule">
+  <Type>Code</Type>
+  <CommandName>Report</CommandName>
+  <CommandArgument>blank</CommandArgument>
+  <Phase>Execute</Phase>
+</insert></c><c y="NodeSet" t="2019-06-20T10:30:28"><controller name="Customer" />
+<view id="v100" />
+<delete /></c><c y="NodeSet" t="2019-06-20T10:30:38"><controller name="Customer" />
+<actionGroup id="ag100" />
+<delete /></c><c y="NodeSet" t="2019-06-20T10:30:46"><controller name="Customer" />
+<rule id="r100" />
+<delete /></c><c y="NodeSet" t="2019-06-20T10:31:11"><controller name="Customer" />
+<copy>
+  <controller name="Customer" />
+  <view id="grid1" />
+</copy></c><c y="NodeSet" t="2019-06-20T10:31:20"><controller name="Customer" />
+<view id="v100" />
+<update>
+  <ReportTemplate>true</ReportTemplate>
+</update></c><c y="NodeSet" t="2019-06-20T10:32:48"><controller name="Customer" />
+<view id="v100" />
+<delete /></c><c y="NodeSet" t="2019-06-20T10:33:18"><controller name="Customer" />
+<copy>
+  <controller name="Customer" />
+  <view id="grid1" />
+</copy></c><c y="NodeSet" t="2019-06-20T10:36:57"><controller name="Customer" />
+<view id="v100" />
+<update>
+  <ReportTemplate>true</ReportTemplate>
+</update></c><c y="NodeSet" t="2019-06-20T10:37:33"><controller name="Customer" />
+<insert type="actionGroup">
+  <Scope>ActionColumn</Scope>
+  <HeaderText>Report</HeaderText>
+  <Flat>false</Flat>
+</insert></c><c y="NodeSet" t="2019-06-20T10:37:58"><controller name="Customer" />
+<actionGroup id="ag100" />
+<insert type="action">
+  <CommandName>Report</CommandName>
+  <CommandArgument>blank</CommandArgument>
+  <CausesValidation>true</CausesValidation>
+</insert></c><c y="NodeSet" t="2019-06-20T10:38:19"><controller name="Customer" />
+<insert type="rule">
+  <Type>Code</Type>
+  <CommandName>Report</CommandName>
+  <CommandArgument>blank</CommandArgument>
+  <Phase>Execute</Phase>
+</insert></c><c y="NodeSet" t="2019-06-20T10:41:14"><controller name="Customer" />
+<view id="grid1" />
+<copy>
+  <controller name="Customer" />
+  <view id="grid1" />
+</copy></c><c y="NodeSet" t="2019-06-20T10:41:21"><controller name="Customer" />
+<view id="v101" />
+<update>
+  <ReportTemplate>true</ReportTemplate>
+</update></c><c y="NodeSet" t="2019-08-26T20:31:08"><controller name="PerformanceNPMSB" />
+<view id="grid1" />
+<update>
+  <FilterExpression />
+</update></c><c y="NodeSet" t="2019-08-26T20:32:40"><controller name="PerformanceNPMSB" />
+<view id="grid1" />
+<update>
+  <FilterExpression>CompanyName='NPMSB'</FilterExpression>
+</update></c><c y="NodeSet" t="2019-08-26T20:33:19"><controller name="PerformanceNPMSB" />
+<clone /></c><c y="NodeSet" t="2019-08-26T20:33:28"><controller name="PerformanceNPMSB1" />
+<rename>PerformanceADMSB</rename></c><c y="NodeSet" t="2019-08-26T20:33:47"><controller name="PerformanceADMSB" />
+<view id="grid1" />
+<update>
+  <Label>Peformance For ADMSB</Label>
+  <FilterExpression>CompanyName='ADMSB'</FilterExpression>
+</update></c></log><log type="Application"><c y="NodeSet" t="2019-06-18T11:57:38"><pages />
+<insert type="page">
+  <Name>MemberShip</Name>
+  <Generate>Always</Generate>
+  <UseExtenders>false</UseExtenders>
+  <Offline>false</Offline>
+  <Path>Member Ship</Path>
+  <Title>Member Ship</Title>
+  <Roles>*</Roles>
+</insert></c><c y="NodeSet" t="2019-06-18T11:57:41"><page name="MemberShip" />
+<copyRef type="controller">
+  <Controller>Membership</Controller>
+</copyRef></c><c y="NodeSet" t="2019-08-26T20:34:02"><page name="Home" />
+<copyRef type="controller">
+  <Controller>PerformanceADMSB</Controller>
+</copyRef></c><c y="NodeSet" t="2019-08-26T20:34:57"><page name="Home" />
+<dataView id="view5" />
+<update>
+  <Roles>MarketingManager</Roles>
+</update></c></log></logs>

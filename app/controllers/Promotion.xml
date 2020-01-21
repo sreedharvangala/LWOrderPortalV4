@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Promotion" conflictDetection="overwriteChanges" label="Promotion" handler="Finsoft.Rules.PromotionBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Promotion"."PromotionID" "PromotionID"
+	,"Promotion"."Title" "Title"
+	,"Promotion"."Description" "Description"
+	,"Promotion"."Image" "Image"
+	,"Promotion"."Active" "Active"
+	,"Promotion"."FileName" "FileName"
+	,"Promotion"."ContentType" "ContentType"
+	,"Promotion"."FromDate" "FromDate"
+	,"Promotion"."ToDate" "ToDate"
+	,"Promotion"."Length" "Length"
+from "dbo"."Promotion" "Promotion"
+]]></text>
+    </command>
+    <command id="PromotionIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="PromotionID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="PromotionID" type="Int32" allowNulls="false" isPrimaryKey="true" label="Promotion ID" readOnly="true" />
+    <field name="Title" type="String" allowNulls="false" label="Title" length="50" showInSummary="true" />
+    <field name="Description" type="String" label="Description" length="1000" showInSummary="true" />
+    <field name="Image" type="Byte[]" onDemand="true" sourceFields="PromotionID" onDemandHandler="PromotionImage" onDemandStyle="Thumbnail" allowQBE="false" allowSorting="false" label="Attach PDF File" showInSummary="true" />
+    <field name="Active" type="Boolean" allowNulls="false" label="Active" showInSummary="true" />
+    <field name="FileName" type="String" label="File Name" length="100" showInSummary="true" />
+    <field name="ContentType" type="String" label="Content Type" length="100" />
+    <field name="FromDate" type="DateTime" dataFormatString="d/M/yyyy" label="From Date" allowNulls="false" causesCalculate="true" />
+    <field name="ToDate" type="DateTime" dataFormatString="d/M/yyyy" label="To Date" allowNulls="false" causesCalculate="true" />
+    <field name="Length" type="Int32" label="Length" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Promotion" tags="view-style-grid ">
+      <headerText />
+      <dataFields>
+        <dataField fieldName="Title" columns="50" />
+        <dataField fieldName="Description" />
+        <dataField fieldName="Active" />
+        <dataField fieldName="ContentType" hidden="true" textMode="Static" />
+        <dataField fieldName="FromDate" columns="20" />
+        <dataField fieldName="ToDate" columns="20" />
+        <dataField fieldName="Length" columns="15" hidden="true" textMode="Static" />
+        <dataField fieldName="FileName" textMode="Static" />
+        <dataField fieldName="Image" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Promotion">
+      <headerText />
+      <categories>
+        <category id="c1" headerText="Promotion" flow="NewColumn">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Title" columns="50" />
+            <dataField fieldName="Description" />
+            <dataField fieldName="Active" />
+            <dataField fieldName="ContentType" hidden="true" textMode="Static" />
+            <dataField fieldName="FromDate" columns="20" />
+            <dataField fieldName="ToDate" columns="20" />
+            <dataField fieldName="Length" columns="15" hidden="true" textMode="Static" />
+            <dataField fieldName="FileName" textMode="Static" />
+            <dataField fieldName="Image" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Promotion">
+      <headerText />
+      <categories>
+        <category id="c1" flow="NewColumn">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Title" columns="50" />
+            <dataField fieldName="Description" />
+            <dataField fieldName="Active" />
+            <dataField fieldName="ContentType" hidden="true" textMode="Static" />
+            <dataField fieldName="FromDate" columns="20" />
+            <dataField fieldName="ToDate" columns="20" />
+            <dataField fieldName="Length" columns="15" hidden="true" textMode="Static" />
+            <dataField fieldName="FileName" textMode="Static" />
+            <dataField fieldName="Image" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenClientScript="this.hasDetails()" />
+      <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Calculate" type="JavaScript" phase="Before" commandArgument="FromDate" name="FromDate Validation"><![CDATA[// validate the data field value
+// 
+
+if ([FromDate] > [ToDate]) {
+    // tell the client library to skip the execution of update, insert, or delete
+    this.preventDefault();
+    // set the focus to the field "Country" and display an error message
+    this.result.focus(
+        'FromDate', 'FromDate is not more than ToDate',
+        this.arguments().CommandName);
+    // show an additional information in the message bar at the top of the page
+    this.result.showMessage('Error trying to execute {0} command', 
+        this.arguments().CommandName);
+}]]></rule>
+    <rule id="r101" commandName="Calculate" commandArgument="ToDate" type="JavaScript" phase="Before" name="ToDate Validation"><![CDATA[// validate the data field value
+// 
+
+if ([FromDate] > [ToDate]) {
+    // tell the client library to skip the execution of update, insert, or delete
+    this.preventDefault();
+    // set the focus to the field "Country" and display an error message
+    this.result.focus(
+        'ToDate', 'ToDate is less than FromDate',
+        this.arguments().CommandName);
+    // show an additional information in the message bar at the top of the page
+    this.result.showMessage('Error trying to execute {0} command', 
+        this.arguments().CommandName);
+}]]></rule>
+  </businessRules>
+</dataController>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="vwPriceList" alias="vwPriceList" created="2019-06-18T11:49:56" modified="2019-06-20T16:01:58" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="SysRowID" fieldName="SysRowID" label="SysRowID" primaryKey="true" />
+    <column name="Company" fieldName="Company" label="Company" />
+    <column name="CustNum" fieldName="CustNum" label="CustNum" />
+    <column name="ListCode" fieldName="ListCode" label="ListCode" sortOrder="1" sortType="Ascending" />
+    <column name="PartNum" fieldName="PartNum" label="PartNum" />
+    <column name="BasePrice" fieldName="BasePrice" label="Base Price" format="c" />
+    <column name="Price" fieldName="Price" label="Price" format="c" />
+    <column name="CustID" fieldName="CustID" label="Cust ID" />
+  </columns>
+</dataModel>

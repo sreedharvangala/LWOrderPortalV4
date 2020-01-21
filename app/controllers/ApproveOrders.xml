@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ApproveOrders" label="ApproveOrders" conflictDetection="overwriteChanges" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <fields>
+    <field name="ApprovalNormalOrders" type="DataView" label="Approval Normal Orders">
+      <dataView controller="ApprovalNormalOrders" view="grid1" />
+    </field>
+    <field name="ApprovalExceptionOrders" type="DataView" label="Approval Exception Orders">
+      <dataView controller="ApprovalExceptionOrders" view="grid1" />
+    </field>
+    <field name="ApprovedOrders" type="DataView" label="Approved Orders">
+      <dataView controller="ApprovedOrders" view="grid1" />
+    </field>
+    <field name="RejectedOrders" type="DataView" label="Rejected Orders">
+      <dataView controller="RejectedOrders" view="grid1" />
+    </field>
+    <field name="OrderStatusLog" type="DataView" label="Order Status Log">
+      <dataView controller="OrderStatusLog" view="grid1" filterSource="RejectedOrders" filterFields="OrderHedID" />
+    </field>
+  </fields>
+  <views>
+    <view id="Form1" type="Form" label="Approve Orders">
+      <categories>
+        <category id="c1" headerText="Approve Orders" tab="Normal" flow="NewColumn">
+          <dataFields>
+            <dataField fieldName="ApprovalNormalOrders" columns="15">
+              <dataView multiSelect="true" showPageSize="false" pageSize="17" />
+            </dataField>
+          </dataFields>
+        </category>
+        <category tab="Exception" id="c2">
+          <dataFields>
+            <dataField fieldName="ApprovalExceptionOrders" columns="15">
+              <dataView multiSelect="true" showPageSize="false" pageSize="17" />
+            </dataField>
+          </dataFields>
+        </category>
+        <category tab="Approved" id="c3">
+          <dataFields>
+            <dataField fieldName="ApprovedOrders" columns="15">
+              <dataView multiSelect="true" showPageSize="false" pageSize="17" />
+            </dataField>
+          </dataFields>
+        </category>
+        <category tab="Rejected" id="c4">
+          <dataFields>
+            <dataField fieldName="RejectedOrders" columns="15">
+              <dataView multiSelect="true" showPageSize="false" pageSize="17" />
+            </dataField>
+            <dataField fieldName="OrderStatusLog" columns="15">
+              <dataView pageSize="17" />
+            </dataField>
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+</dataController>

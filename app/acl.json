@@ -1,0 +1,10 @@
+{
+  "enabled": false,
+  "permissions": {
+    "page.approve": "Administrators, SalesPerson",
+    "page.member-ship": "Administrators, SalesPerson",
+    "controller.Roles.read": "Administrators",
+    "controller.Roles.update": "Administrators",
+    "controller.OrderHeader.read": "Administrators, SalesPerson"
+  }
+}

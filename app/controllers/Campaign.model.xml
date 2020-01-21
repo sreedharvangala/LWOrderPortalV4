@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Campaign" alias="Campaign" created="2019-07-11T06:48:05" modified="2019-07-11T07:09:37" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="CampaignNo" fieldName="CampaignNo" label="Campaign No" />
+    <column name="CampaignName" fieldName="CampaignName" label="Campaign Name" />
+    <column name="FromDate" fieldName="FromDate" label="From Date" />
+    <column name="ToDate" fieldName="ToDate" label="To Date" />
+    <column name="PDFFile" fieldName="Pdffile" label="Pdffile" />
+    <column name="PDFFileContentType" fieldName="PdffileContentType" label="Pdffile Content Type" />
+    <column name="PDFFileLength" fieldName="PdffileLength" label="Pdffile Length" />
+    <column name="PDFFileFileName" fieldName="PdffileFileName" label="Pdffile File Name" />
+  </columns>
+</dataModel>

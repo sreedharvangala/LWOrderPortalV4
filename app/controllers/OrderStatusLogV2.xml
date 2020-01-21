@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="OrderStatusLogV2" label="OrderStatusLogV2" conflictDetection="overwriteChanges" handler="Finsoft.Rules.OrderStatusLogV2BusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <fields />
+  <businessRules>
+    <rule id="r100" commandName="New" type="Code" phase="Execute" />
+  </businessRules>
+  <views />
+  <actions />
+</dataController>

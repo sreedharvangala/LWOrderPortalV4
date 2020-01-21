@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="OrderPromotions" alias="OrderPromotions" created="2019-08-02T15:59:23" modified="2019-08-02T16:28:53" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="OrderHed" parentTableSchema="dbo" parentTableName="OrderHed" x="270" y="20">
+      <foreignKeyColumn columnName="OrderHedID" parentColumnName="OrderHedID" />
+    </foreignKey>
+    <foreignKey id="Promotion" parentTableSchema="dbo" parentTableName="Promotion" x="252" y="204">
+      <foreignKeyColumn columnName="PromotionID" parentColumnName="PromotionID" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="OrderHedID" fieldName="OrderHedID" label="OrderHedID" aliasColumnName="OrderHedID" aliasForeignKey="OrderHed" />
+    <column name="OrderHedID" fieldName="OrderHedOrderHedID" label="Order Hed Order Hed ID" foreignKey="OrderHed" />
+    <column name="PromotionID" fieldName="PromotionID" label="Promotion ID" aliasColumnName="PromotionID" aliasForeignKey="Promotion" />
+    <column name="PromotionID" fieldName="PromotionID1" label="Promotion ID" foreignKey="Promotion" />
+    <column name="Title" fieldName="PromotionTitle" label="Promotion Title" foreignKey="Promotion" />
+    <column name="Description" fieldName="PromotionDescription" label="Promotion Description" foreignKey="Promotion" />
+  </columns>
+</dataModel>

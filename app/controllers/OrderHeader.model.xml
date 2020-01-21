@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="OrderHed" alias="OrderHed" created="2019-06-22T17:18:36" modified="2019-09-30T22:39:57" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="Company" parentTableSchema="dbo" parentTableName="Company" x="355" y="20">
+      <foreignKeyColumn columnName="CompanyID" parentColumnName="CompanyID" />
+    </foreignKey>
+    <foreignKey id="OrderStatus" parentTableSchema="dbo" parentTableName="OrderStatus" x="355" y="344">
+      <foreignKeyColumn columnName="OrderStatusID" parentColumnName="OrderStatusID" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="OrderHedID" fieldName="OrderHedID" label="ID" sortType="Descending" sortOrder="1" />
+    <column name="CompanyID" fieldName="CompanyID" label="Company" aliasColumnName="CompanyName" aliasForeignKey="Company" />
+    <column name="CompanyName" fieldName="CompanyName" label="Company Name" foreignKey="Company" />
+    <column name="CustSysRowID" fieldName="CustSysRowID" label="CustSysRowID" />
+    <column name="CustNum" fieldName="CustNum" label="CustNum" />
+    <column name="CustID" fieldName="CustID" label="CustID" />
+    <column name="CustomerName" fieldName="CustomerName" label="Customer Name" />
+    <column name="ShipToSysRowID" fieldName="ShipToSysRowID" label="ShipTo" />
+    <column name="ShipToName" fieldName="ShipToName" label="Ship To Name" />
+    <column name="BulkOrder" fieldName="BulkOrder" label="Bulk Order" />
+    <column name="OrderDate" fieldName="OrderDate" label="Order Date" format="d/M/yyyy" />
+    <column name="ReqShipDate" fieldName="ReqShipDate" label="ReqShip Date" format="d/M/yyyy" />
+    <column name="OrderType" fieldName="OrderType" label="Order Type" />
+    <column name="OrderComments" fieldName="OrderComments" label="Order Comments" />
+    <column name="InternalRemarks" fieldName="InternalRemarks" label="Internal Remarks" />
+    <column name="PromotionRemarks" fieldName="PromotionRemarks" label="Promotion Remarks" />
+    <column name="OrderStatusID" fieldName="OrderStatusID" label="StatusID" aliasColumnName="StatusName" aliasForeignKey="OrderStatus" />
+    <column name="StatusName" fieldName="OrderStatusName" label="Status Name" foreignKey="OrderStatus" />
+    <column name="Owner" fieldName="Owner" label="Owner" />
+    <column name="Creator" fieldName="Creator" label="Creator" />
+    <column name="CreatedOn" fieldName="CreatedOn" label="Created On" format="g" />
+    <column name="ModifiedBy" fieldName="ModifiedBy" label="Modified By" />
+    <column name="ModifiedOn" fieldName="ModifiedOn" label="Modified On" format="g" />
+    <column name="Exception" fieldName="Exception" label="Exception" />
+    <column name="TotalAmount" fieldName="TotalAmount" label="Total Amount" />
+    <column name="ExceptionDtl" fieldName="ExceptionDtl" label="Exception Dtl" />
+    <column name="EpiOrderNum" fieldName="EpiOrderNum" label="Epi Order Num" />
+    <column name="EpiError" fieldName="EpiError" label="Epi Error" />
+    <column name="TargetReportingDate" fieldName="TargetReportingDate" label="Target Reporting Date" format="g" />
+  </columns>
+</dataModel>

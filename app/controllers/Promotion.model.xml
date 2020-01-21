@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Promotion" alias="Promotion" created="2019-06-18T11:49:52" modified="2019-07-28T11:47:01" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="PromotionID" fieldName="PromotionID" label="Promotion ID" />
+    <column name="Title" fieldName="Title" label="Title" />
+    <column name="Description" fieldName="Description" label="Description" />
+    <column name="Image" fieldName="Image" label="Image" />
+    <column name="Active" fieldName="Active" label="Active" />
+    <column name="FileName" fieldName="FileName" label="File Name" />
+    <column name="ContentType" fieldName="ContentType" label="Content Type" />
+    <column name="FromDate" fieldName="FromDate" label="From Date" format="g" />
+    <column name="ToDate" fieldName="ToDate" label="To Date" format="g" />
+    <column name="Length" fieldName="Length" label="Length" />
+  </columns>
+</dataModel>

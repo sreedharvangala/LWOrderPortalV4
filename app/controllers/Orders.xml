@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Orders" label="Orders" conflictDetection="overwriteChanges" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <fields>
+    <field name="OrderHeader" type="DataView" label="Order Header">
+      <dataView controller="OrderHeader" view="grid1" />
+    </field>
+    <field name="OrdersWaitingForPriceChange" type="DataView" label="Orders Waiting For Price Change">
+      <dataView controller="OrdersWaitingForPriceChange" view="grid1" />
+    </field>
+    <field name="OrdersWaitingForApproval" type="DataView" label="Orders Waiting For Approval">
+      <dataView controller="OrdersWaitingForApproval" view="grid1" />
+    </field>
+    <field name="OrdersApproved" type="DataView" label="Orders Approved">
+      <dataView controller="OrdersApproved" view="grid1" />
+    </field>
+    <field name="OrdersRejected" type="DataView" label="Orders Rejected">
+      <dataView controller="OrdersRejected" view="grid1" />
+    </field>
+    <field name="OrderStatusLog" type="DataView" label="Order Status Log">
+      <dataView controller="OrderStatusLog" view="grid1" />
+    </field>
+    <field name="OrderStatusLog_2" type="DataView" label="Order Status Log 2">
+      <dataView controller="OrderStatusLog" view="grid1" filterSource="OrdersWaitingForApproval" filterFields="OrderHedID" />
+    </field>
+    <field name="OrderStatusLog_3" type="DataView" label="Order Status Log 3">
+      <dataView controller="OrderStatusLog" view="grid1" filterSource="OrdersApproved" filterFields="OrderHedID" />
+    </field>
+    <field name="OrderStatusLog_4" type="DataView" label="Order Status Log 4">
+      <dataView controller="OrderStatusLog" view="grid1" filterSource="OrdersRejected" filterFields="OrderHedID" />
+    </field>
+  </fields>
+  <views>
+    <view id="form1" type="Form" label="Orders">
+      <categories>
+        <category tab="Open" id="c1" flow="NewColumn">
+          <dataFields>
+            <dataField fieldName="OrderHeader" columns="15">
+              <dataView multiSelect="true" showPageSize="false" pageSize="17" />
+            </dataField>
+          </dataFields>
+        </category>
+        <category tab="Waiting For Price Change" id="c2">
+          <dataFields>
+            <dataField fieldName="OrdersWaitingForPriceChange" columns="15">
+              <dataView multiSelect="true" showPageSize="false" pageSize="17" />
+            </dataField>
+          </dataFields>
+        </category>
+        <category tab="Waiting For Approval" id="c3">
+          <dataFields>
+            <dataField fieldName="OrdersWaitingForApproval" columns="15">
+              <dataView multiSelect="true" showPageSize="false" pageSize="17" />
+            </dataField>
+            <dataField fieldName="OrderStatusLog_2" columns="15">
+              <dataView multiSelect="true" pageSize="17" />
+            </dataField>
+          </dataFields>
+        </category>
+        <category tab="Approved" id="c4">
+          <dataFields>
+            <dataField fieldName="OrdersApproved" columns="15">
+              <dataView multiSelect="true" showPageSize="false" pageSize="17" />
+            </dataField>
+            <dataField fieldName="OrderStatusLog_3" columns="15">
+              <dataView multiSelect="true" pageSize="17" />
+            </dataField>
+          </dataFields>
+        </category>
+        <category tab="Rejected" id="c5">
+          <dataFields>
+            <dataField fieldName="OrdersRejected" columns="15">
+              <dataView multiSelect="true" showPageSize="false" pageSize="17" />
+            </dataField>
+            <dataField fieldName="OrderStatusLog_4" columns="15">
+              <dataView multiSelect="true" pageSize="17" />
+            </dataField>
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+</dataController>

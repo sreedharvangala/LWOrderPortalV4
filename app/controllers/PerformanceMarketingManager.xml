@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="PerformanceMarketingManager" label="PerformanceMarketingManager" conflictDetection="overwriteChanges" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"V_PerformanceDB"."CompanyName" "CompanyName"
+	,"V_PerformanceDB"."UserName" "UserName"
+	,"V_PerformanceDB"."OrderDate" "OrderDate"
+	,"V_PerformanceDB"."OrderQty" "OrderQty"
+	,"V_PerformanceDB"."OrderVal" "OrderVal"
+	,"V_PerformanceDB"."PartNum" "PartNum"
+	,"V_PerformanceDB"."PartDescription" "PartDescription"
+	,"V_PerformanceDB"."Period" "Period"
+	,"V_PerformanceDB"."Yr" "Yr"
+	,"V_PerformanceDB"."StatusName" "StatusName"
+	,"V_PerformanceDB"."Customer" "Customer"
+	,"V_PerformanceDB"."CustID" "CustID"
+	,"V_PerformanceDB"."RecType" "RecType"
+	,"V_PerformanceDB"."UserName2" "UserName2"
+	,"V_PerformanceDB"."RoleName" "RoleName"
+	,"V_PerformanceDB"."manager" "Manager"
+	,"V_PerformanceDB"."orderdate2" "Orderdate2"
+from "dbo"."V_PerformanceDB" "V_PerformanceDB"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="CompanyName" type="String" allowNulls="false" label="Company Name" length="50" showInSummary="true" />
+    <field name="UserName" type="String" allowNulls="false" label="User Name" length="50" showInSummary="true" />
+    <field name="OrderDate" type="DateTime" label="Order Date" showInSummary="true" />
+    <field name="OrderQty" type="Decimal" label="Order Qty" showInSummary="true" />
+    <field name="OrderVal" type="Decimal" label="Order Val" showInSummary="true" />
+    <field name="PartNum" type="String" label="Part Num" length="50" />
+    <field name="PartDescription" type="String" label="Part Description" length="500" />
+    <field name="Period" type="Int32" label="Period" />
+    <field name="Yr" type="Int32" label="Yr" />
+    <field name="StatusName" type="String" allowNulls="false" label="Status Name" length="50" />
+    <field name="Customer" type="String" label="Customer" length="250" />
+    <field name="CustID" type="String" label="Cust ID" length="20" />
+    <field name="RecType" type="String" allowNulls="false" label="Rec Type" length="6" />
+    <field name="UserName2" type="String" allowNulls="false" label="User Name 2" length="50" />
+    <field name="RoleName" type="String" allowNulls="false" label="Role Name" length="50" />
+    <field name="Manager" type="String" allowNulls="false" label="Manager" length="50" />
+    <field name="Orderdate2" type="DateTime" dataFormatString="g" label="Orderdate 2" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Peformance For NPMSB" showInSelector="false" tags="view-style-charts" filter="CompanyName='NPMSB'">
+      <headerText />
+      <dataFields>
+        <dataField fieldName="CompanyName" columns="50" />
+        <dataField fieldName="UserName" columns="10" />
+        <dataField fieldName="OrderDate" columns="10" tag="pivot1-row1-column-month pivot1-title:&quot;Performance By Value&quot; pivot1-haxistitle:&quot;Month&quot;  pivot1-vaxistitle:&quot;Value (RM)&quot; " />
+        <dataField fieldName="OrderQty" columns="15" tag="pivot2-val1-sum" />
+        <dataField fieldName="OrderVal" columns="15" tag="pivot1-val1-sum" />
+        <dataField fieldName="PartNum" columns="10" />
+        <dataField fieldName="PartDescription" />
+        <dataField fieldName="Period" columns="15" />
+        <dataField fieldName="Yr" columns="15" />
+        <dataField fieldName="StatusName" columns="50" />
+        <dataField fieldName="Customer" />
+        <dataField fieldName="CustID" columns="20" />
+        <dataField fieldName="RecType" columns="6" tag="pivot1-col1 pivot2-col1 " />
+        <dataField fieldName="UserName2" columns="50" />
+        <dataField fieldName="RoleName" columns="50" />
+        <dataField fieldName="Manager" columns="50" />
+        <dataField fieldName="Orderdate2" columns="20" tag="pivot2-row1-column-month pivot2-title:&quot;Performance By Carton&quot; pivot2-haxistitle:&quot;Month&quot;  pivot2-vaxistitle:&quot;Cartons&quot;" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review V Performancedb">
+      <headerText />
+      <categories>
+        <category id="c1" headerText="V Performancedb" flow="NewColumn">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CompanyName" columns="50" />
+            <dataField fieldName="UserName" columns="50" />
+            <dataField fieldName="OrderDate" columns="10" />
+            <dataField fieldName="OrderQty" columns="15" />
+            <dataField fieldName="OrderVal" columns="15" />
+            <dataField fieldName="PartNum" columns="50" />
+            <dataField fieldName="PartDescription" />
+            <dataField fieldName="Period" columns="15" />
+            <dataField fieldName="Yr" columns="15" />
+            <dataField fieldName="StatusName" columns="50" />
+            <dataField fieldName="Customer" />
+            <dataField fieldName="CustID" columns="20" />
+            <dataField fieldName="RecType" columns="6" />
+            <dataField fieldName="UserName2" columns="50" />
+            <dataField fieldName="RoleName" columns="50" />
+            <dataField fieldName="Manager" columns="50" />
+            <dataField fieldName="Orderdate2" columns="20" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New V Performancedb">
+      <headerText />
+      <categories>
+        <category id="c1" flow="NewColumn">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CompanyName" columns="50" />
+            <dataField fieldName="UserName" columns="50" />
+            <dataField fieldName="OrderDate" columns="10" />
+            <dataField fieldName="OrderQty" columns="15" />
+            <dataField fieldName="OrderVal" columns="15" />
+            <dataField fieldName="PartNum" columns="50" />
+            <dataField fieldName="PartDescription" />
+            <dataField fieldName="Period" columns="15" />
+            <dataField fieldName="Yr" columns="15" />
+            <dataField fieldName="StatusName" columns="50" />
+            <dataField fieldName="Customer" />
+            <dataField fieldName="CustID" columns="20" />
+            <dataField fieldName="RecType" columns="6" />
+            <dataField fieldName="UserName2" columns="50" />
+            <dataField fieldName="RoleName" columns="50" />
+            <dataField fieldName="Manager" columns="50" />
+            <dataField fieldName="Orderdate2" columns="20" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenClientScript="this.hasDetails()" />
+      <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

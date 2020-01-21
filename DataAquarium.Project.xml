@@ -1,0 +1,72 @@
+<!-- 
+  This file is provided to store the settings for your Data Aquarium project. 
+  You can safely delete this file if no further code generation is planned.
+-->
+<project compatibility="20111118" dataModel="required" appFolder="app" displayName="OrderPortalV2" group="" type="Web Site Factory" sourceControl="git" subscriptionLevel="Unlimited" name="OrderPortalV4" prettyName="Order Portal V4" appGenVersion="8.7.10.0" codeDomProvider="CSharp" targetFramework="4.6" userInterface="TouchUI" pageImplementation="html" databaseChanged="true" xmlns="urn:schemas-codeontime-com:data-aquarium-project">
+  <connectionString hostDatabaseSharing="false" sessionStateMode="None">Data Source=10.168.0.25;Initial Catalog=COTPortalV1Test;Persist Security Info=True;User ID=sa;Password=lubew5512##;</connectionString>
+  <providerName>System.Data.SqlClient</providerName>
+  <namespace>Finsoft</namespace>
+  <webServer run="true" port="30010" preview="Browser" client="">
+    <webConfig>AppendChild: /configuration/appSettings
+
+&lt;add key="UserName" value="finsoft1" /&gt;
+    &lt;add key="Password" value="finsoft123" /&gt;
+    &lt;add key="DomainName" value="" /&gt;
+    &lt;add key="ReportServerURL" value="http://10.168.0.25//ReportServer" /&gt;
+    &lt;add key="ReportPath" value="/EpicorPilot101/reports/CustomReports/BAQReportTest"/&gt;
+ &lt;add key="hostName" value="nasae10server"/&gt;
+    &lt;add key="environment" value="EpicorPilot101"/&gt;
+&lt;add key="dbname" value="EpicorPilot101"/&gt;
+    &lt;add key="Company" value="ADMSB"/&gt;
+    &lt;add key="Plant" value="MfgSys"/&gt;
+    &lt;add key="epicorUserID" value="manager"/&gt;
+    &lt;add key="epiorUserPassword" value="manager"/&gt;</webConfig>
+  </webServer>
+  <features useSaveAndNew="true" pageHeader="Order Portal" copyright="" annotations="false" annotationsPath="" newColumn="true" floating="false" maxGridFields="100" multiSelect="true" batchEdit="true" advancedSearch="false" advancedLookup="false" relationshipExplorer="false" enablePermalinks="false" enableHistory="false" enableTransactions="false" showModalForms="true" tabViewSelection="5">
+    <navigation detectUnderscoreSeparatedSchema="" />
+    <blob allowUploadOnInsert="true" />
+    <framework scriptOnly="true" useExtenders="false" />
+    <grid actionColumn="true" />
+    <touch desktopDisplayDensity="Tiny" mobileDisplayDensity="Auto" transitions="" sidebar="Landscape" labelsInList="DisplayedBelow" initialListMode="SeeAll" menu="toolbar" promoteActions="true" smartDates="false" mapApiIdentifier="" mapApiIdentifierMobile="" />
+    <cms searchEngine="" analysisEngine="" analysisOnDataPages="false" />
+    <ease urlHashing="false">
+      <auditing></auditing>
+    </ease>
+    <packageProperties></packageProperties>
+    <smtp deliveryMethod="Network" deliveryFormat="" from="" clientDomain="" targetName="" host="" port="" defaultCredentials="true" enableSsl="false" username="" password="" />
+    <addons OfflineSync="" ContentMaker="" />
+  </features>
+  <reports enabled="true" version="14" />
+  <host path="" url="" />
+  <databaseObjectFilter generate="ControllersAndPages"></databaseObjectFilter>
+  <bll normalizeModelNames="true" discoveryDepth="3" labelFormatExpression="" selectMethod="Select" selectSingleMethod="SelectSingle" insertMethod="Insert" updateMethod="Update" deleteMethod="Delete" generateSharedBusinessRules="true" includeViews="true" tabViewSelection="0">
+    <fieldMap></fieldMap>
+    <keys></keys>
+    <fieldsToIgnore></fieldsToIgnore>
+    <fieldsToHide></fieldsToHide>
+    <customLabels></customLabels>
+  </bll>
+  <membership enabled="false" providerName="System.Data.SqlClient" connectionString="" windowsAuthentication="false" activeDirectory="false" customSecurity="true" dedicatedLogin="false" displayRememberMe="true" rememberMeSet="false" displaySignUp="false" displayPasswordRecovery="false" displayMyAccount="true" displayHelp="true" idleUserDetectionTimeout="-1" tabViewSelection="2" validationKey="F336D0DED6306DB555DC3AC405FB10C68D8833A592E8B2DB0BA5A3606F6B5303BF8BFA8BB7959C734FCE0C48085D42A50CDA08117A92B9BCE3D68F2B54A2907E">
+    <adConfig></adConfig>
+    <config>table Users = Users
+column [int|uiid] UserID = UserID
+column [text] UserName = UserName
+column [text] Password = Password
+column [text] Email = Email
+
+table Roles = Roles
+column [int|uiid] RoleID = RoleID
+column [text] RoleName = RoleName
+
+table UserRoles = UserRoles
+column [int|uiid] UserID = UserID
+column [int|uiid] RoleID = RoleID
+</config>
+  </membership>
+  <globalization uiCulture="en-GB" culture="ms-MY" enableClientBasedCulture="false" supportedCultures="ms-MY,en-GB; en-US,en-US; " googleTranslateApiKey="AIzaSyBjKZCIy-TIkWv7FefXTM5oN9nEEpZ_K0s" />
+  <layout name="Classic" menuStyle="MultiLevel" />
+  <theme name="Vantage" />
+  <publish mode="FileSystem">
+    <fileSystem external="false">{"path":"D:\\OldPC\\Epicor\\Customers Docs\\Lube World\\Git\\Deploy2","previewUrl":"","webConfigCustomizations":{"AppSettings":{"MembershipProviderValidationKey":"V1"}}}</fileSystem>
+  </publish>
+</project>

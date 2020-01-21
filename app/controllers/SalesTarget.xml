@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="SalesTarget" conflictDetection="overwriteChanges" label="Sales Target" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"SalesTarget"."STID" "Stid"
+	,"SalesTarget"."UserID" "UserID"
+	,"User"."UserName" "UserName"
+	,"SalesTarget"."Year" "Year"
+	,"SalesTarget"."January" "January"
+	,"SalesTarget"."February" "February"
+	,"SalesTarget"."March" "March"
+	,"SalesTarget"."April" "April"
+	,"SalesTarget"."May" "May"
+	,"SalesTarget"."Jun" "Jun"
+	,"SalesTarget"."July" "July"
+	,"SalesTarget"."August" "August"
+	,"SalesTarget"."September" "September"
+	,"SalesTarget"."Oktober" "Oktober"
+	,"SalesTarget"."November" "November"
+	,"SalesTarget"."December" "December"
+	,"SalesTarget"."JanValue" "JanValue"
+	,"SalesTarget"."FebValue" "FebValue"
+	,"SalesTarget"."MarValue" "MarValue"
+	,"SalesTarget"."AprValue" "AprValue"
+	,"SalesTarget"."MayValue" "MayValue"
+	,"SalesTarget"."JunValue" "JunValue"
+	,"SalesTarget"."JulValue" "JulValue"
+	,"SalesTarget"."AugValue" "AugValue"
+	,"SalesTarget"."SepValue" "SepValue"
+	,"SalesTarget"."OctValue" "OctValue"
+	,"SalesTarget"."NovValue" "NovValue"
+	,"SalesTarget"."DecValue" "DecValue"
+from "dbo"."SalesTarget" "SalesTarget"
+	left join "dbo"."Users" "User" on "SalesTarget"."UserID" = "User"."UserID"
+]]></text>
+    </command>
+    <command id="STIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Stid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Stid" type="Int32" allowNulls="false" isPrimaryKey="true" label="Stid" readOnly="true" />
+    <field name="UserID" type="Int32" label="User ID" showInSummary="true">
+      <items style="Lookup" dataController="Users" newDataView="createForm1" dataValueField="UserID" dataTextField="UserName" />
+    </field>
+    <field name="UserName" type="String" readOnly="true" label="User Name" length="50" />
+    <field name="Year" type="Int32" label="Year" showInSummary="true" />
+    <field name="January" type="Int32" label="January" showInSummary="true" dataFormatString="N0" />
+    <field name="February" type="Int32" label="February" showInSummary="true" dataFormatString="N0" />
+    <field name="March" type="Int32" label="March" showInSummary="true" dataFormatString="N0" />
+    <field name="April" type="Int32" label="April" dataFormatString="N0" />
+    <field name="May" type="Int32" label="May" dataFormatString="N0" />
+    <field name="Jun" type="Int32" label="June" dataFormatString="N0" />
+    <field name="July" type="Int32" label="July" dataFormatString="N0" />
+    <field name="August" type="Int32" label="August" dataFormatString="N0" />
+    <field name="September" type="Int32" label="September" dataFormatString="N0" />
+    <field name="Oktober" type="Int32" label="October" dataFormatString="N0" />
+    <field name="November" type="Int32" label="November" dataFormatString="N0" />
+    <field name="December" type="Int32" label="December" dataFormatString="N0" />
+    <field name="JanValue" type="Decimal" label="January" dataFormatString="RM{0,N0}" />
+    <field name="FebValue" type="Decimal" label="February" dataFormatString="RM{0,N0}" />
+    <field name="MarValue" type="Decimal" label="March" dataFormatString="RM{0,N0}" />
+    <field name="AprValue" type="Decimal" label="April" dataFormatString="RM{0,N0}" />
+    <field name="MayValue" type="Decimal" label="May" dataFormatString="RM{0,N0}" />
+    <field name="JunValue" type="Decimal" label="June" dataFormatString="RM{0,N0}" />
+    <field name="JulValue" type="Decimal" label="July" dataFormatString="RM{0,N0}" />
+    <field name="AugValue" type="Decimal" label="August" dataFormatString="RM{0,N0}" />
+    <field name="SepValue" type="Decimal" label="September" dataFormatString="RM{0,N0}" />
+    <field name="OctValue" type="Decimal" label="October" dataFormatString="RM{0,N0}" />
+    <field name="NovValue" type="Decimal" label="November" dataFormatString="RM{0,N0}" />
+    <field name="DecValue" type="Decimal" label="December" dataFormatString="RM{0,N0}" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Sales Target">
+      <headerText />
+      <dataFields>
+        <dataField fieldName="UserID" aliasFieldName="UserName" />
+        <dataField fieldName="Year" columns="15" />
+        <dataField fieldName="January" columns="15">
+          <headerText>Jan Qty</headerText>
+        </dataField>
+        <dataField fieldName="February" columns="15" dataFormatString="D">
+          <headerText>Feb Qty</headerText>
+        </dataField>
+        <dataField fieldName="March" columns="15">
+          <headerText>Mar Qty</headerText>
+        </dataField>
+        <dataField fieldName="April" columns="15">
+          <headerText>Apr Qty</headerText>
+        </dataField>
+        <dataField fieldName="May" columns="15">
+          <headerText>May Qty</headerText>
+        </dataField>
+        <dataField fieldName="Jun" columns="15">
+          <headerText>Jun Qty</headerText>
+        </dataField>
+        <dataField fieldName="July" columns="15">
+          <headerText>Jul Qty</headerText>
+        </dataField>
+        <dataField fieldName="August" columns="15">
+          <headerText>Aug Qty</headerText>
+        </dataField>
+        <dataField fieldName="September" columns="15">
+          <headerText>Sep Qty</headerText>
+        </dataField>
+        <dataField fieldName="Oktober" columns="15">
+          <headerText>Oct Qty</headerText>
+        </dataField>
+        <dataField fieldName="November" columns="15">
+          <headerText>Nov Qty</headerText>
+        </dataField>
+        <dataField fieldName="December" columns="15">
+          <headerText>Dec Qty</headerText>
+        </dataField>
+        <dataField fieldName="JanValue" columns="15">
+          <headerText>Jan Value</headerText>
+        </dataField>
+        <dataField fieldName="FebValue" columns="15">
+          <headerText>Feb Value</headerText>
+        </dataField>
+        <dataField fieldName="MarValue" columns="15">
+          <headerText>Mar Value</headerText>
+        </dataField>
+        <dataField fieldName="AprValue" columns="15">
+          <headerText>Apr Value</headerText>
+        </dataField>
+        <dataField fieldName="MayValue" columns="15">
+          <headerText>May Value</headerText>
+        </dataField>
+        <dataField fieldName="JunValue" columns="15">
+          <headerText>Jun Value</headerText>
+        </dataField>
+        <dataField fieldName="JulValue" columns="15">
+          <headerText>Jul Value</headerText>
+        </dataField>
+        <dataField fieldName="AugValue" columns="15">
+          <headerText>Aug Value</headerText>
+        </dataField>
+        <dataField fieldName="SepValue" columns="15">
+          <headerText>Sep Value</headerText>
+        </dataField>
+        <dataField fieldName="OctValue" columns="15">
+          <headerText>Oct Value</headerText>
+        </dataField>
+        <dataField fieldName="NovValue" columns="15">
+          <headerText>Nov Value</headerText>
+        </dataField>
+        <dataField fieldName="DecValue" columns="15">
+          <headerText>Dec Value</headerText>
+        </dataField>
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Sales Target">
+      <headerText />
+      <categories>
+        <category id="c2" flow="NewColumn">
+          <description />
+          <dataFields>
+            <dataField fieldName="UserID" aliasFieldName="UserName" />
+            <dataField fieldName="Year" columns="15" />
+          </dataFields>
+        </category>
+        <category tab="Quantity" id="c3" flow="NewRow">
+          <dataFields>
+            <dataField fieldName="January" columns="15" dataFormatString="D" />
+            <dataField fieldName="February" columns="15" />
+            <dataField fieldName="March" columns="15" />
+            <dataField fieldName="April" columns="15" />
+            <dataField fieldName="May" columns="15" />
+            <dataField fieldName="Jun" columns="15" />
+            <dataField fieldName="July" columns="15" />
+            <dataField fieldName="August" columns="15" />
+            <dataField fieldName="September" columns="15" />
+            <dataField fieldName="Oktober" columns="15" />
+            <dataField fieldName="November" columns="15" />
+            <dataField fieldName="December" columns="15" />
+          </dataFields>
+        </category>
+        <category tab="Value" id="c4" flow="NewColumn">
+          <dataFields>
+            <dataField fieldName="JanValue" columns="15" />
+            <dataField fieldName="FebValue" columns="15" />
+            <dataField fieldName="MarValue" columns="15" />
+            <dataField fieldName="AprValue" columns="15" />
+            <dataField fieldName="MayValue" columns="15" />
+            <dataField fieldName="JunValue" columns="15" />
+            <dataField fieldName="JulValue" columns="15" />
+            <dataField fieldName="AugValue" columns="15" />
+            <dataField fieldName="SepValue" columns="15" />
+            <dataField fieldName="OctValue" columns="15" />
+            <dataField fieldName="NovValue" columns="15" />
+            <dataField fieldName="DecValue" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Sales Target">
+      <headerText />
+      <categories>
+        <category id="c1" flow="NewColumn">
+          <description />
+          <dataFields>
+            <dataField fieldName="UserID" aliasFieldName="UserName" />
+            <dataField fieldName="Year" columns="15" />
+          </dataFields>
+        </category>
+        <category tab="Quantity" id="c2" flow="NewRow">
+          <dataFields>
+            <dataField fieldName="January" columns="15" dataFormatString="D" />
+            <dataField fieldName="February" columns="15" />
+            <dataField fieldName="March" columns="15" />
+            <dataField fieldName="April" columns="15" />
+            <dataField fieldName="May" columns="15" />
+            <dataField fieldName="Jun" columns="15" />
+            <dataField fieldName="July" columns="15" />
+            <dataField fieldName="August" columns="15" />
+            <dataField fieldName="September" columns="15" />
+            <dataField fieldName="Oktober" columns="15" />
+            <dataField fieldName="November" columns="15" />
+            <dataField fieldName="December" columns="15" />
+          </dataFields>
+        </category>
+        <category tab="Value" id="c3" flow="NewColumn">
+          <dataFields>
+            <dataField fieldName="JanValue" columns="15" />
+            <dataField fieldName="FebValue" columns="15" />
+            <dataField fieldName="MarValue" columns="15" />
+            <dataField fieldName="AprValue" columns="15" />
+            <dataField fieldName="MayValue" columns="15" />
+            <dataField fieldName="JunValue" columns="15" />
+            <dataField fieldName="JulValue" columns="15" />
+            <dataField fieldName="AugValue" columns="15" />
+            <dataField fieldName="SepValue" columns="15" />
+            <dataField fieldName="OctValue" columns="15" />
+            <dataField fieldName="NovValue" columns="15" />
+            <dataField fieldName="DecValue" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenClientScript="this.hasDetails()" />
+      <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

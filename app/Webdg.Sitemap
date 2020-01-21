@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode title="^SiteHome^Home^SiteHome^" description="" url="~/index.html">
+    <siteMapNode title="^HomePath^Home^HomePath^" description="^HomeDesc^Application home page^HomeDesc^" url="~/pages/home" cssClass="Wide" device="touch" />
+    <siteMapNode title="Setup" description="" url="~/pages/setup" roles="Administrators">
+      <siteMapNode title="Customer" description="View Customer" url="~/pages/customer" />
+      <siteMapNode title="Company" description="View Company" url="~/pages/company" />
+      <siteMapNode title="Part" description="View Part" url="~/pages/part" />
+      <siteMapNode title="Price List" description="View Price List" url="~/pages/price-list" />
+      <siteMapNode title="Promotion" description="View Promotion" url="~/pages/promotion" />
+      <siteMapNode title="Ship To" description="View Ship To" url="~/pages/ship-to" />
+      <siteMapNode title="Member Ship" description="" url="~/pages/member-ship" roles="*" />
+      <siteMapNode title="Order Status" description="" url="~/pages/order-status" roles="*" />
+    </siteMapNode>
+<<<<<<< HEAD
+    <siteMapNode title="^Order^Order^Order^" description="View Order Header" url="~/pages/order" roles="SalesPerson, Administrators" cssClass="material-icon-assignment" />
+    <siteMapNode title="^Approve^Approve^Approve^" description="" url="~/pages/approve" roles="SalesManager, MarketingManager,Administrators" cssClass="material-icon-create" />
+    <siteMapNode title="^Performance^Performace Dashboard^Performance^" description="" url="~/pages/performace-dashboard" roles="*" cssClass="Wide" />
+=======
+    <siteMapNode title="^Order^Order^Order^" description="View Order Header" url="~/pages/order" roles="SalesPerson, Administrators, SalesClerk" cssClass="material-icon-assignment" />
+    <siteMapNode title="^Approve^Approve^Approve^" description="" url="~/pages/approve" roles="SalesManager, MarketingManager,Administrators,SalesClerk" cssClass="material-icon-create" />
+    <siteMapNode title="Performace Dashboard" description="" url="~/pages/performace-dashboard" roles="*" cssClass="Wide" />
+>>>>>>> 6bfe6cdf0b117cd30f9d2de20703d6b5767ca58b
+  </siteMapNode>
+</siteMap>

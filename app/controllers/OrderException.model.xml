@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="OrderException" alias="OrderException" created="2019-07-11T17:06:14" modified="2019-07-11T17:06:18" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="OrderHed" parentTableSchema="dbo" parentTableName="OrderHed" x="265" y="20">
+      <foreignKeyColumn columnName="OrderHedID" parentColumnName="OrderHedID" />
+    </foreignKey>
+    <foreignKey id="OrderHedCompany" parentTableSchema="dbo" parentTableName="Company" baseForeignKey="OrderHed" x="559" y="20">
+      <foreignKeyColumn columnName="CompanyID" parentColumnName="CompanyID" />
+    </foreignKey>
+    <foreignKey id="OrderHedOrderStatus" parentTableSchema="dbo" parentTableName="OrderStatus" baseForeignKey="OrderHed" x="559" y="183">
+      <foreignKeyColumn columnName="OrderStatusID" parentColumnName="OrderStatusID" />
+    </foreignKey>
+    <foreignKey id="OrderHedPromotion" parentTableSchema="dbo" parentTableName="Promotion" baseForeignKey="OrderHed" x="559" y="344">
+      <foreignKeyColumn columnName="PromotionID" parentColumnName="PromotionID" />
+    </foreignKey>
+    <foreignKey id="ExCode" parentTableSchema="dbo" parentTableName="OrderExceptionCodes" x="265" y="250">
+      <foreignKeyColumn columnName="ExCodeID" parentColumnName="ExCodeID" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="OrderHedID" fieldName="OrderHedID" label="Order Hed ID" aliasColumnName="CustID" aliasForeignKey="OrderHed" />
+    <column name="CustID" fieldName="OrderHedCustID" label="Order Hed Cust ID" foreignKey="OrderHed" />
+    <column name="CompanyName" fieldName="OrderHedCompanyName" label="Order Hed Company Name" foreignKey="OrderHedCompany" />
+    <column name="StatusName" fieldName="OrderHedOrderStatusName" label="Order Hed Order Status Name" foreignKey="OrderHedOrderStatus" />
+    <column name="Title" fieldName="OrderHedPromotionTitle" label="Order Hed Promotion Title" foreignKey="OrderHedPromotion" />
+    <column name="ExCodeID" fieldName="ExCodeID" label="Ex Code ID" aliasColumnName="ExceptionCode" aliasForeignKey="ExCode" />
+    <column name="ExceptionCode" fieldName="ExCodeExceptionCode" label="Ex Code Exception Code" foreignKey="ExCode" />
+  </columns>
+</dataModel>

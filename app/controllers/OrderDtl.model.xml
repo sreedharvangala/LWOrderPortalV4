@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="OrderDtl" alias="OrderDtl" created="2019-06-18T11:49:49" modified="2019-09-20T11:02:05" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="OrderHed" parentTableSchema="dbo" parentTableName="OrderHed" x="352" y="20">
+      <foreignKeyColumn columnName="OrderHedID" parentColumnName="OrderHedID" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="OrderDtlID" fieldName="OrderDtlID" label="OrderDtlID" />
+    <column name="OrderHedID" fieldName="OrderHedID" label="OrderHedID" aliasColumnName="CustID" aliasForeignKey="OrderHed" />
+    <column name="CustID" fieldName="OrderHedCustID" label="CustID" foreignKey="OrderHed" />
+    <column name="BulkOrder" fieldName="OrderHedBulkOrder" label="BulkOrder" foreignKey="OrderHed" />
+    <column name="PartSysRowID" fieldName="PartSysRowID" label="PartSysRowID" />
+    <column name="PartNum" fieldName="PartNum" label="PartNum" />
+    <column name="PartDescription" fieldName="PartDescription" label="Part Desc" />
+    <column name="UOM" fieldName="Uom" label="UOM" />
+    <column name="SellingPrice" fieldName="SellingPrice" label="Selling Price" format="c" />
+    <column name="BasePrice" fieldName="BasePrice" label="Base Price" format="c" />
+    <column name="OrderQty" fieldName="OrderQty" label="Order Qty" />
+    <column name="FOCQty" fieldName="Focqty" label="FOC Qty" />
+    <column name="ChangeSellingPrice" fieldName="ChangeSellingPrice" label="Change Selling Price" format="c" />
+    <column name="ChangeBasePrice" fieldName="ChangeBasePrice" label="Change Base Price" format="c" />
+    <column name="ProposedBasePrice" fieldName="ProposedBasePrice" label="Proposed Base Price" format="c" />
+    <column name="ProposedSellingPrice" fieldName="ProposedSellingPrice" label="Proposed Selling Price" format="c" />
+    <column name="Amount" fieldName="Amount" label="Amount" />
+    <column name="CtnConv" fieldName="CtnConv" label="CtnConv" />
+    <column name="ProposedAmount" fieldName="ProposedAmount" label="Proposed Amount" format="c" />
+  </columns>
+</dataModel>

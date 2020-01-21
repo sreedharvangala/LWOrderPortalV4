@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="vwShipTo" alias="vwShipTo" created="2019-06-18T11:49:57" modified="2019-08-13T11:22:49" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="SysRowID" fieldName="SysRowID" label="Sys Row ID" primaryKey="true" />
+    <column name="Company" fieldName="Company" label="Company" sortType="Ascending" sortOrder="1" />
+    <column name="CustNum" fieldName="CustNum" label="Cust Num" />
+    <column name="ShipToNum" fieldName="ShipToNum" label="ShipToNum" sortType="Ascending" sortOrder="3" />
+    <column name="Name" fieldName="Name" label="Name" sortOrder="4" sortType="Ascending" />
+    <column name="Address1" fieldName="Address1" label="Address1" />
+    <column name="Address2" fieldName="Address2" label="Address2" />
+    <column name="Address3" fieldName="Address3" label="Address3" />
+    <column name="City" fieldName="City" label="City" />
+    <column name="State" fieldName="State" label="State" />
+    <column name="ZIP" fieldName="Zip" label="Zip" />
+    <column name="Country" fieldName="Country" label="Country" />
+    <column name="CustSysRowID" fieldName="CustSysRowID" label="CustSysRowID" />
+    <column name="CustID" fieldName="CustID" label="Cust ID" sortType="Ascending" sortOrder="2" />
+    <column name="PhoneNum" fieldName="PhoneNum" label="Phone Num" />
+    <column name="FaxNum" fieldName="FaxNum" label="Fax Num" />
+  </columns>
+</dataModel>

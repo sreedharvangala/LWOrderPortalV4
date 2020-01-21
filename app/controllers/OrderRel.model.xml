@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="OrderRel" alias="OrderRel" created="2019-06-18T11:49:50" modified="2019-07-01T17:44:29" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="OrderHed" parentTableSchema="dbo" parentTableName="OrderHed" x="337" y="20">
+      <foreignKeyColumn columnName="OrderHedID" parentColumnName="OrderHedID" />
+    </foreignKey>
+    <foreignKey id="OrderDtl" parentTableSchema="dbo" parentTableName="OrderDtl" x="337" y="250">
+      <foreignKeyColumn columnName="OrderDtlID" parentColumnName="OrderDtlID" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="OrderRelID" fieldName="OrderRelID" label="OrderRelID" />
+    <column name="OrderHedID" fieldName="OrderHedID" label="OrderHedID" aliasColumnName="CustID" aliasForeignKey="OrderHed" />
+    <column name="CustID" fieldName="OrderHedCustID" label="CustID" foreignKey="OrderHed" />
+    <column name="BulkOrder" fieldName="OrderHedBulkOrder" label="Order Hed Bulk Order" foreignKey="OrderHed" />
+    <column name="OrderDtlID" fieldName="OrderDtlID" label="OrderDtlID" aliasColumnName="PartNum" aliasForeignKey="OrderDtl" />
+    <column name="PartNum" fieldName="OrderDtlPartNum" label="PartNum" foreignKey="OrderDtl" />
+    <column name="OrderRelQty" fieldName="OrderRelQty" label="OrderRel Qty" />
+    <column name="FOCRelQty" fieldName="FocrelQty" label="FOCRel Qty" />
+    <column name="ShipByDate" fieldName="ShipByDate" label="ShipBy Date" />
+    <column name="ShipToSysRowID" fieldName="ShipToSysRowID" label="ShipToSysRowID" />
+    <column name="ShipToName" fieldName="ShipToName" label="ShipTo Name" />
+    <column name="Seq" fieldName="Seq" label="Seq" />
+  </columns>
+</dataModel>

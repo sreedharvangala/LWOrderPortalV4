@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="OrderDtlVw" label="OrderDtlVw" conflictDetection="overwriteChanges" handler="Finsoft.Rules.OrderDtlVwBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"OrderDtl"."OrderDtlID" "OrderDtlID"
+	,"OrderDtl"."OrderHedID" "OrderHedID"
+	,"OrderHed"."CustID" "OrderHedCustID"
+	,"OrderHed"."BulkOrder" "OrderHedBulkOrder"
+	,"OrderDtl"."PartSysRowID" "PartSysRowID"
+	,"OrderDtl"."PartNum" "PartNum"
+	,"OrderDtl"."PartDescription" "PartDescription"
+	,"OrderDtl"."UOM" "Uom"
+	,"OrderDtl"."SellingPrice" "SellingPrice"
+	,"OrderDtl"."BasePrice" "BasePrice"
+	,"OrderDtl"."OrderQty" "OrderQty"
+	,"OrderDtl"."FOCQty" "Focqty"
+	,"OrderDtl"."ChangeSellingPrice" "ChangeSellingPrice"
+	,"OrderDtl"."ChangeBasePrice" "ChangeBasePrice"
+	,"OrderDtl"."ProposedBasePrice" "ProposedBasePrice"
+	,"OrderDtl"."ProposedSellingPrice" "ProposedSellingPrice"
+	,"OrderDtl"."Amount" "Amount"
+	,"OrderDtl"."CtnConv" "CtnConv"
+	,"OrderDtl"."ProposedAmount" "ProposedAmount"
+from "dbo"."OrderDtl" "OrderDtl"
+	left join "dbo"."OrderHed" "OrderHed" on "OrderDtl"."OrderHedID" = "OrderHed"."OrderHedID"
+]]></text>
+    </command>
+    <command id="OrderDtlIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="OrderDtlID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="OrderDtlID" type="Int32" allowNulls="false" isPrimaryKey="true" label="OrderDtlID" readOnly="true" />
+    <field name="OrderHedID" type="Int32" allowNulls="false" label="OrderHedID" showInSummary="true">
+      <items style="Lookup" dataController="OrderHeader" newDataView="createForm1" dataValueField="OrderHedID" dataTextField="CustID" copy="OrderHedBulkOrder=BulkOrder" />
+    </field>
+    <field name="OrderHedCustID" type="String" readOnly="true" label="CustID" length="20" />
+    <field name="OrderHedBulkOrder" type="Boolean" readOnly="true" label="BulkOrder" />
+    <field name="PartSysRowID" type="Guid" allowNulls="false" label="Part" showInSummary="true" contextFields="Company=OHCompany" causesCalculate="true">
+      <items style="Lookup" dataController="Part" dataTextField="PartDescription" dataValueField="SysRowID" copy="PartNum=PartNum, PartDescription=PartDescription, Uom=Ium" />
+    </field>
+    <field name="PartNum" type="String" label="Part" length="50" showInSummary="true" />
+    <field name="PartDescription" type="String" label="Part Desc" length="500" showInSummary="true" />
+    <field name="Uom" type="String" label="UOM" length="50" showInSummary="true" />
+    <field name="SellingPrice" type="Decimal" dataFormatString="C" label="Selling Price" causesCalculate="true" />
+    <field name="BasePrice" type="Decimal" dataFormatString="C" label="Base Price" />
+    <field name="OrderQty" type="Decimal" label="Order Qty" causesCalculate="true" />
+    <field name="Focqty" type="Decimal" label="FOC Qty" />
+    <field name="ChangeSellingPrice" type="Boolean" dataFormatString="c" label="Change Selling Price" causesCalculate="true" />
+    <field name="ChangeBasePrice" type="Boolean" dataFormatString="c" label="Change Base Price" causesCalculate="true" />
+    <field name="ProposedBasePrice" type="Decimal" dataFormatString="c" label="Proposed Base Price" causesCalculate="true" />
+    <field name="ProposedSellingPrice" type="Decimal" dataFormatString="c" label="Proposed Selling Price" causesCalculate="true" />
+    <field name="Amount" type="Decimal" label="Amount" dataFormatString="C" />
+    <field name="CtnConv" type="Decimal" label="Conv Factor" />
+    <field name="ProposedAmount" type="Decimal" dataFormatString="c" label="Proposed Amount" />
+    <field name="OHCompany" type="String" label="OHCompany" isVirtual="true" length="50" />
+    <field name="OHCustNum" type="Int32" label="OHCust Num" isVirtual="true" />
+    <field name="OHShipByDate" type="Date" label="OHShip By Date" isVirtual="true" />
+    <field name="OHShipToSysRowID" type="Guid" label="OHShip To Sys Row ID" isVirtual="true" />
+    <field name="OHShipToName" type="String" label="OHShip To Name" isVirtual="true" length="50" />
+    <field name="OrderRelVw" type="DataView" label="Order Rel">
+      <dataView controller="OrderRelVw" view="grid1" filterFields="OrderDtlID,OrderHedID" />
+    </field>
+    <field name="SellingPricePerBottle" type="Decimal" label="SellingPrice Per Bottle" isVirtual="true" dataFormatString="c" />
+    <field name="BasePricePerBottle" type="Decimal" label="BasePrice Per Bottle" isVirtual="true" dataFormatString="c" />
+    <field name="ProposedSellingPricePerBottle" type="Decimal" label="Proposed SellingPrice Per Bottle" isVirtual="true" dataFormatString="c" />
+    <field name="ProposedBasePricePerBottle" type="Decimal" label="Proposed BasePrice Per Bottle" isVirtual="true" dataFormatString="c" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Order Dtl" tags="view-style-grid ">
+      <headerText />
+      <dataFields>
+        <dataField fieldName="OrderHedID" aliasFieldName="OrderHedCustID" />
+        <dataField fieldName="OrderHedBulkOrder" />
+        <dataField fieldName="PartNum" columns="50" />
+        <dataField fieldName="PartDescription" />
+        <dataField fieldName="Uom" columns="50" />
+        <dataField fieldName="SellingPrice" columns="15" textMode="Static" />
+        <dataField fieldName="SellingPricePerBottle" columns="15" textMode="Static" />
+        <dataField fieldName="BasePrice" columns="15" textMode="Static" />
+        <dataField fieldName="BasePricePerBottle" columns="15" textMode="Static" />
+        <dataField fieldName="OrderQty" columns="15" />
+        <dataField fieldName="Focqty" columns="15" />
+        <dataField fieldName="ChangeSellingPrice" />
+        <dataField fieldName="ProposedSellingPrice" columns="15">
+          <readOnly>
+            <expression test="[ChangeSellingPrice]==0" type="ClientScript" />
+          </readOnly>
+        </dataField>
+        <dataField fieldName="ProposedSellingPricePerBottle" columns="15" textMode="Static" />
+        <dataField fieldName="ChangeBasePrice" />
+        <dataField fieldName="ProposedBasePrice" columns="15">
+          <readOnly>
+            <expression test="[ChangeBasePrice]==0" type="ClientScript" />
+          </readOnly>
+        </dataField>
+        <dataField fieldName="ProposedBasePricePerBottle" columns="15" textMode="Static" />
+        <dataField fieldName="CtnConv" columns="15" textMode="Static" />
+        <dataField fieldName="Amount" columns="15" aggregate="Sum" />
+        <dataField fieldName="ProposedAmount" columns="15" textMode="Static" aggregate="Sum" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Order Dtl">
+      <headerText />
+      <categories>
+        <category id="c1" headerText="Order Dtl" flow="NewColumn">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="OrderHedID" aliasFieldName="OrderHedCustID" />
+            <dataField fieldName="OrderHedBulkOrder" />
+            <dataField fieldName="PartSysRowID" columns="15" searchOptions="$autocompleteanywhere" aliasFieldName="PartNum" />
+            <dataField fieldName="PartNum" columns="50" readOnly="true" />
+            <dataField fieldName="PartDescription" readOnly="true" />
+            <dataField fieldName="Uom" columns="50" readOnly="true" />
+            <dataField fieldName="SellingPrice" columns="15" textMode="Static" />
+            <dataField fieldName="SellingPricePerBottle" columns="15" textMode="Static" />
+            <dataField fieldName="BasePrice" columns="15" textMode="Static" />
+            <dataField fieldName="BasePricePerBottle" columns="15" textMode="Static" />
+            <dataField fieldName="OrderQty" columns="15">
+              <readOnly>
+                <expression test="[SellingPrice]&gt;1" type="ClientScript" />
+              </readOnly>
+            </dataField>
+            <dataField fieldName="Focqty" columns="15">
+              <readOnly>
+                <expression test="[BasePrice]==1" type="ClientScript" />
+              </readOnly>
+            </dataField>
+            <dataField fieldName="ChangeSellingPrice" />
+            <dataField fieldName="ProposedSellingPrice" columns="15">
+              <readOnly>
+                <expression test="[ChangeSellingPrice]==0" type="ClientScript" />
+              </readOnly>
+            </dataField>
+            <dataField fieldName="ProposedSellingPricePerBottle" columns="15" textMode="Static">
+              <visibility>
+                <expression test="[ChangeSellingPrice]==1" type="ClientScript" />
+              </visibility>
+            </dataField>
+            <dataField fieldName="ChangeBasePrice" />
+            <dataField fieldName="ProposedBasePrice" columns="15">
+              <readOnly>
+                <expression test="[ChangeBasePrice]==0" type="ClientScript" />
+              </readOnly>
+            </dataField>
+            <dataField fieldName="ProposedBasePricePerBottle" columns="15" textMode="Static">
+              <visibility>
+                <expression test="[ChangeBasePrice]==1" type="ClientScript" />
+              </visibility>
+            </dataField>
+            <dataField fieldName="CtnConv" columns="15" textMode="Static" />
+            <dataField fieldName="Amount" columns="15" textMode="Static" />
+            <dataField fieldName="ProposedAmount" columns="15" textMode="Static" />
+            <dataField fieldName="OrderRelVw" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Order Dtl">
+      <headerText />
+      <categories>
+        <category id="c1" flow="NewColumn">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="OrderHedID" aliasFieldName="OrderHedCustID" />
+            <dataField fieldName="OrderHedBulkOrder" />
+            <dataField fieldName="PartSysRowID" columns="15" searchOptions="$autocompleteanywhere" aliasFieldName="PartNum" />
+            <dataField fieldName="PartNum" columns="50" />
+            <dataField fieldName="PartDescription" />
+            <dataField fieldName="Uom" columns="50" />
+            <dataField fieldName="SellingPrice" columns="15" textMode="Static" />
+            <dataField fieldName="SellingPricePerBottle" columns="15" textMode="Static" />
+            <dataField fieldName="BasePrice" columns="15" textMode="Static" />
+            <dataField fieldName="BasePricePerBottle" columns="15" textMode="Static" />
+            <dataField fieldName="OrderQty" columns="15" />
+            <dataField fieldName="Focqty" columns="15" />
+            <dataField fieldName="ChangeSellingPrice" />
+            <dataField fieldName="ProposedSellingPrice" columns="15" />
+            <dataField fieldName="ProposedSellingPricePerBottle" columns="15" textMode="Static">
+              <visibility>
+                <expression test="[ChangeSellingPrice]==1" type="ClientScript" />
+              </visibility>
+            </dataField>
+            <dataField fieldName="ChangeBasePrice" />
+            <dataField fieldName="ProposedBasePrice" columns="15" />
+            <dataField fieldName="ProposedBasePricePerBottle" columns="15" textMode="Static">
+              <visibility>
+                <expression test="[ChangeBasePrice]==1" type="ClientScript" />
+              </visibility>
+            </dataField>
+            <dataField fieldName="CtnConv" columns="15" textMode="Static" />
+            <dataField fieldName="Amount" columns="15" />
+            <dataField fieldName="ProposedAmount" columns="15" textMode="Static" />
+            <dataField fieldName="OHCompany" columns="50" readOnly="true" />
+            <dataField fieldName="OHCustNum" columns="15" readOnly="true" />
+            <dataField fieldName="OHShipByDate" columns="15" />
+            <dataField fieldName="OHShipToSysRowID" columns="15" />
+            <dataField fieldName="OHShipToName" columns="50" />
+            <dataField fieldName="OrderDtlID" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenClientScript="this.hasDetails()" />
+      <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="New" type="Code" phase="Execute" />
+    <rule id="r101" commandName="New" type="Sql" phase="Execute"><![CDATA[SET @OrderQty=1
+SET @Focqty=0
+
+SET @ChangeSellingPrice=0
+SET @ChangeBasePrice=0
+
+SELECT @OHCompany = b.CompanyName, @OHCustNum = a.CustNum, @OHShipByDate=a.ReqShipDate, @OHShipToSysRowID=a.ShipToSysRowID, @OHShipToName=a.ShipToName
+FROM OrderHed a
+INNER JOIN Company b
+ON a.CompanyID=b.CompanyID
+WHERE A.OrderHedID=@OrderHedID]]></rule>
+    <rule id="r102" commandName="Select" type="Code" phase="Execute" />
+    <rule id="r106" commandName="Calculate" type="Code" phase="Execute" />
+    <rule id="r103" commandName="Insert|Update" type="Code" phase="Execute" />
+    <rule id="r104" commandName="Insert" type="Sql" phase="After"><![CDATA[IF (@OrderQty is not null and @OrderQty <= 0)
+Begin
+	set @Result_Focus = 'Quantity, The quantity must be greater than zero.'
+	set @BusinessRules_PreventDefault = 1
+End
+ELSE
+BEGIN
+	
+	  INSERT INTO OrderRel (OrderHedID,OrderDtlID,OrderRelQty,FOCRelQty,ShipByDate,ShipToSysRowID,ShipToName)
+	  VALUES (@OrderHedID,@OrderDtlID,@OrderQty,@Focqty,@OHShipByDate,@OHShipToSysRowID,@OHShipToName)	
+	  
+END]]></rule>
+    <rule id="r105" commandName="Insert|Update" view="Exception" type="Sql" phase="After"><![CDATA[IF @ChangeSellingPrice = 1 
+BEGIN
+SET @Exception = 1
+END
+
+IF @ChangeBasePrice = 1
+BEGIN
+UPDATE OrderHed SET @Exception = 1 WHERE OrderHedID = @OrderHedID
+END]]></rule>
+  </businessRules>
+</dataController>

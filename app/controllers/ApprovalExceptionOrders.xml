@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ApprovalExceptionOrders" label="ApprovalExceptionOrders" conflictDetection="overwriteChanges" handler="Finsoft.Rules.ApprovalExceptionOrdersBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"OrderHed"."OrderHedID" "OrderHedID"
+	,"OrderHed"."CompanyID" "CompanyID"
+	,"Company"."CompanyName" "CompanyName"
+	,"OrderHed"."CustSysRowID" "CustSysRowID"
+	,"OrderHed"."CustNum" "CustNum"
+	,"OrderHed"."CustID" "CustID"
+	,"OrderHed"."CustomerName" "CustomerName"
+	,"OrderHed"."ShipToSysRowID" "ShipToSysRowID"
+	,"OrderHed"."ShipToName" "ShipToName"
+	,"OrderHed"."BulkOrder" "BulkOrder"
+	,"OrderHed"."OrderDate" "OrderDate"
+	,"OrderHed"."ReqShipDate" "ReqShipDate"
+	,"OrderHed"."OrderType" "OrderType"
+	,"OrderHed"."OrderComments" "OrderComments"
+	,"OrderHed"."InternalRemarks" "InternalRemarks"
+	,"OrderHed"."PromotionRemarks" "PromotionRemarks"
+	,"OrderHed"."OrderStatusID" "OrderStatusID"
+	,"OrderStatus"."StatusName" "OrderStatusName"
+	,"OrderHed"."Owner" "Owner"
+	,"OrderHed"."Creator" "Creator"
+	,"OrderHed"."CreatedOn" "CreatedOn"
+	,"OrderHed"."ModifiedBy" "ModifiedBy"
+	,"OrderHed"."ModifiedOn" "ModifiedOn"
+	,"OrderHed"."Exception" "Exception"
+	,"OrderHed"."TotalAmount" "TotalAmount"
+	,"OrderHed"."ExceptionDtl" "ExceptionDtl"
+	,"OrderHed"."EpiOrderNum" "EpiOrderNum"
+	,"OrderHed"."EpiError" "EpiError"
+	,"OrderHed"."TargetReportingDate" "TargetReportingDate"
+from "dbo"."OrderHed" "OrderHed"
+	left join "dbo"."Company" "Company" on "OrderHed"."CompanyID" = "Company"."CompanyID"
+	left join "dbo"."OrderStatus" "OrderStatus" on "OrderHed"."OrderStatusID" = "OrderStatus"."OrderStatusID"
+order by "OrderHed"."OrderHedID" desc]]></text>
+    </command>
+    <command id="OrderHedIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="OrderHedID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="OrderHedID" type="Int32" allowNulls="false" isPrimaryKey="true" label="ID" readOnly="true" />
+    <field name="CompanyID" type="Int32" allowNulls="false" label="Company" showInSummary="true">
+      <items style="Lookup" dataController="Company" newDataView="createForm1" dataValueField="CompanyID" dataTextField="CompanyName" />
+    </field>
+    <field name="CompanyName" type="String" readOnly="true" label="Company" length="50" />
+    <field name="CustSysRowID" type="Guid" allowNulls="false" label="Customer" showInSummary="true" contextFields="Company=CompanyName" causesCalculate="true">
+      <items style="Lookup" dataController="Customer" dataTextField="Name" dataValueField="SysRowID" copy="CustNum=CustNum, CustID=CustID, CustomerName=Name, CAddress1=Address1, CAddress2=Address2, CAddress3=Address3, CCity=City, CState=State, CZip=Zip, CCountry=Country, Balance=Balance, CreditLimit=CreditLimit2, UnPaidInvoices=UnPaidInvoices, OutStandingOrders=OutStandingOrders, UnPostedInvoices=UnPostedInvoices, AgeCurr=AgeCurr, Age30=Age30, Age60=Age60, Age90=Age90, SZip=Zip, Age120=Age120, Age150=Age150, TermsExceed=TermsExceed,&#xD;&#xA;PhoneNum=PhoneNum,FaxNum=FaxNum" pageSize="17" />
+    </field>
+    <field name="CustNum" type="Int32" label="CustNum" showInSummary="true" />
+    <field name="CustID" type="String" label="Customer ID" length="20" showInSummary="true" />
+    <field name="CustomerName" type="String" label="Customer" length="250" showInSummary="true" />
+    <field name="ShipToSysRowID" type="Guid" allowNulls="false" label="ShipTo" contextFields="Company=CompanyName, CustID=CustID">
+      <items style="Lookup" dataController="ShipTo" dataTextField="Name" dataValueField="SysRowID" copy="ShipToName=Name, SAddress2=Address2, SAddress2=Address2, SAddress3=Address3, SCity=City, SState=State, SZip=Zip, SCountry=Country,&#xD;&#xA;SPhoneNum=PhoneNum,SFaxNum=FaxNum" />
+    </field>
+    <field name="ShipToName" type="String" label="Ship To Name" length="50" />
+    <field name="BulkOrder" type="Boolean" allowNulls="false" label="Bulk Order" />
+    <field name="OrderDate" type="DateTime" allowNulls="false" dataFormatString="d/M/yyyy" label="Order Date" />
+    <field name="ReqShipDate" type="DateTime" dataFormatString="d/M/yyyy" label="Ship Date" />
+    <field name="OrderType" type="String" label="Order Type" length="50">
+      <items style="DropDownList">
+        <item value="N" text="Normal" />
+        <item value="P" text="Pail" />
+      </items>
+    </field>
+    <field name="OrderComments" type="String" allowQBE="false" allowSorting="false" label="Invoice Comments" />
+    <field name="InternalRemarks" type="String" allowQBE="false" allowSorting="false" label="Internal Remarks" />
+    <field name="PromotionRemarks" type="String" allowQBE="false" allowSorting="false" label="Promotion Remarks" />
+    <field name="OrderStatusID" type="Int32" allowNulls="false" label="StatusID">
+      <items style="Lookup" dataController="OrderStatus" newDataView="createForm1" dataValueField="OrderStatusID" dataTextField="StatusName" />
+    </field>
+    <field name="OrderStatusName" type="String" readOnly="true" label="Order Status" length="50" />
+    <field name="Owner" type="String" label="Sales Person" length="50" contextFields="RoleName='Sales Person'">
+      <items style="Lookup" dataController="AuditUsers" dataTextField="UserName" dataValueField="UserName" />
+    </field>
+    <field name="Creator" type="String" label="Creator" length="50">
+      <items style="Lookup" dataController="Users" dataTextField="UserName" dataValueField="UserName" />
+    </field>
+    <field name="CreatedOn" type="DateTime" dataFormatString="g" label="Created On" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" dataFormatString="g" label="Modified On" />
+    <field name="Exception" type="Boolean" default="((0))" label="Exception" />
+    <field name="TotalAmount" type="Decimal" label="Amount" dataFormatString="C">
+      <formula>SELECT SUM(OrderDtl.SellingPrice* OrderDtl.OrderQty) 
+FROM OrderDtl
+WHERE OrderDtl.OrderHedID= OrderHed.OrderHedID
+</formula>
+    </field>
+    <field name="ExceptionDtl" type="String" label="Exception Dtl" length="100" />
+    <field name="EpiOrderNum" type="Int32" label="Epi Order Num" />
+    <field name="EpiError" type="String" label="Epi Error" length="1000" />
+    <field name="TargetReportingDate" type="DateTime" dataFormatString="g" label="Target Reporting Date" />
+    <field name="CAddress1" type="String" label="CAddress 1" isVirtual="true" length="50" />
+    <field name="CAddress2" type="String" label="CAddress 2" isVirtual="true" length="50" />
+    <field name="CAddress3" type="String" label="CAddress 3" isVirtual="true" length="50" />
+    <field name="CCity" type="String" label="CCity" isVirtual="true" length="50" />
+    <field name="CState" type="String" label="CState" isVirtual="true" length="50" />
+    <field name="CZip" type="String" label="CZip" isVirtual="true" length="10" />
+    <field name="CCountry" type="String" label="CCountry" isVirtual="true" length="50" />
+    <field name="SAddress1" type="String" label="SAddress 1" isVirtual="true" length="50" />
+    <field name="SAddress2" type="String" label="SAddress 2" isVirtual="true" length="50" />
+    <field name="SAddress3" type="String" label="SAddress 3" isVirtual="true" length="50" />
+    <field name="SCity" type="String" label="SCity" isVirtual="true" length="50" />
+    <field name="SState" type="String" label="SState" isVirtual="true" length="50" />
+    <field name="SZip" type="String" label="SZip" isVirtual="true" length="10" />
+    <field name="SCountry" type="String" label="SCountry" isVirtual="true" length="50" />
+    <field name="Balance" type="Decimal" label="Balance" isVirtual="true" dataFormatString="C" />
+    <field name="CreditLimit" type="Decimal" label="Credit Limit" isVirtual="true" dataFormatString="C" />
+    <field name="UnPaidInvoices" type="Decimal" label="UnPaid Invoices" isVirtual="true" dataFormatString="C" />
+    <field name="OutStandingOrders" type="Decimal" label="OutStanding Orders" isVirtual="true" dataFormatString="C" />
+    <field name="UnPostedInvoices" type="Decimal" label="UnPosted Invoices" isVirtual="true" dataFormatString="C" />
+    <field name="AgeCurr" type="Decimal" label="Age Curr" isVirtual="true" dataFormatString="C" />
+    <field name="Age30" type="Decimal" label="Age 30" isVirtual="true" dataFormatString="C" />
+    <field name="Age60" type="Decimal" label="Age 60" isVirtual="true" dataFormatString="C" />
+    <field name="Age90" type="Decimal" label="Age 90" isVirtual="true" dataFormatString="C" />
+    <field name="Age120" type="Decimal" label="Age 120" isVirtual="true" dataFormatString="C" />
+    <field name="Age150" type="Decimal" label="Age 150" isVirtual="true" dataFormatString="C" />
+    <field name="TermsExceed" type="Boolean" label="Terms Exceed" isVirtual="true" />
+    <field name="OrderDtl" type="DataView" label="Order Dtl">
+      <dataView controller="OrderDtl" view="grid1" filterFields="OrderHedID" />
+    </field>
+    <field name="OrderRel" type="DataView" label="Order Rel">
+      <dataView controller="OrderRel" view="grid1" filterSource="OrderDtl" filterFields="OrderHedID,OrderDtlID" />
+    </field>
+    <field name="RejectedRemarks" type="String" label="Rejected Remarks" length="500" />
+    <field name="RejectedReason" type="String" label="RejectedReason" length="50">
+      <items style="RadioButtonList">
+        <item value="Credit Over Limit" text="Credit Over Limit" />
+        <item value="Overdue" text="Overdue" />
+        <item value="WrongOrder" text="WrongOrder" />
+        <item value="Others" text="Others" />
+      </items>
+    </field>
+    <field name="ExceptionCodes1" type="String" label="Exception Codes 1" isVirtual="true" length="100">
+      <items style="CheckBoxList" dataController="OrderExceptionCodes" targetController="OrderException2" />
+    </field>
+    <field name="Promotion" type="String" label="Promotion" isVirtual="true" allowNulls="false">
+      <items style="CheckBoxList" dataController="Promotion" targetController="OrderPromotions" />
+    </field>
+    <field name="PhoneNum" type="String" label="PhoneNum" isVirtual="true" length="20" />
+    <field name="FaxNum" type="String" label="FaxNum" isVirtual="true" length="20" />
+    <field name="SPhoneNum" type="String" label="PhoneNum" isVirtual="true" length="20" />
+    <field name="SFaxNum" type="String" label="FaxNum" isVirtual="true" length="20" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Order Header" sortExpression="OrderHedID desc" tags="view-style-grid ">
+      <headerText />
+      <dataFields>
+        <dataField fieldName="OrderHedID" columns="15">
+          <headerText>OrderNo</headerText>
+        </dataField>
+        <dataField fieldName="CompanyID" aliasFieldName="CompanyName" />
+        <dataField fieldName="OrderDate" columns="20" />
+        <dataField fieldName="Owner" columns="50" />
+        <dataField fieldName="CustomerName" />
+        <dataField fieldName="TotalAmount" columns="15" />
+        <dataField fieldName="OrderStatusID" aliasFieldName="OrderStatusName" />
+        <dataField fieldName="CustNum" columns="15" />
+        <dataField fieldName="CustID" columns="20" />
+        <dataField fieldName="ShipToName" columns="50" />
+        <dataField fieldName="BulkOrder" />
+        <dataField fieldName="ReqShipDate" columns="20" />
+        <dataField fieldName="OrderType" columns="50" />
+        <dataField fieldName="OrderComments" rows="5" />
+        <dataField fieldName="PromotionRemarks" rows="5" />
+        <dataField fieldName="Creator" columns="50" />
+        <dataField fieldName="CreatedOn" columns="20" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="20" />
+        <dataField fieldName="Exception" />
+        <dataField fieldName="ExceptionDtl" />
+        <dataField fieldName="InternalRemarks" rows="5" />
+        <dataField fieldName="EpiOrderNum" columns="15" hidden="true" textMode="Static" />
+        <dataField fieldName="EpiError" hidden="true" textMode="Static" />
+        <dataField fieldName="TargetReportingDate" columns="20" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Order" tags="modal-max-any">
+      <headerText />
+      <categories>
+        <category id="c1" headerText="Header Information" floating="true" flow="NewColumn">
+          <description />
+          <dataFields>
+            <dataField fieldName="OrderHedID" columns="15">
+              <headerText>Order No.</headerText>
+            </dataField>
+            <dataField fieldName="BulkOrder" />
+            <dataField fieldName="OrderDate" columns="20">
+              <headerText>Order Date</headerText>
+            </dataField>
+            <dataField fieldName="CompanyID" aliasFieldName="CompanyName" />
+            <dataField fieldName="CustID" columns="20">
+              <headerText>Customer ID</headerText>
+            </dataField>
+            <dataField fieldName="CustomerName">
+              <headerText>Customer Name</headerText>
+            </dataField>
+            <dataField fieldName="TotalAmount" columns="15">
+              <headerText>Order Value</headerText>
+            </dataField>
+            <dataField fieldName="ExceptionDtl" />
+            <dataField fieldName="EpiOrderNum" columns="15" hidden="true" textMode="Static" />
+            <dataField fieldName="EpiError" hidden="true" textMode="Static" />
+            <dataField fieldName="TargetReportingDate" columns="20" />
+            <dataField fieldName="Owner" columns="50">
+              <headerText>Sales Person</headerText>
+            </dataField>
+            <dataField fieldName="Exception" hidden="true" />
+          </dataFields>
+        </category>
+        <category headerText="Summary Balance" tab="Aging" id="c9" flow="NewRow">
+          <dataFields>
+            <dataField fieldName="UnPaidInvoices" columns="15" textMode="Static">
+              <headerText>Unpaid Invoices</headerText>
+            </dataField>
+            <dataField fieldName="OutStandingOrders" columns="15" textMode="Static">
+              <headerText>Open Orders</headerText>
+            </dataField>
+            <dataField fieldName="UnPostedInvoices" columns="15" textMode="Static">
+              <headerText>Unposted Invoices</headerText>
+            </dataField>
+            <dataField fieldName="TermsExceed" textMode="Static">
+              <headerText>Terms Exceeded</headerText>
+            </dataField>
+            <dataField fieldName="CreditLimit" columns="15" textMode="Static">
+              <headerText>Credit Limit</headerText>
+            </dataField>
+            <dataField fieldName="Balance" columns="15" dataFormatString="C" textMode="Static">
+              <headerText>Balance</headerText>
+            </dataField>
+          </dataFields>
+        </category>
+        <category tab="Aging" id="c4" headerText="Aging Balance" floating="false" flow="NewColumn">
+          <dataFields>
+            <dataField fieldName="AgeCurr" columns="15" textMode="Static">
+              <headerText>Current </headerText>
+            </dataField>
+            <dataField fieldName="Age30" columns="15" textMode="Static">
+              <headerText>30 Days</headerText>
+            </dataField>
+            <dataField fieldName="Age60" columns="15" textMode="Static">
+              <headerText>60 Days</headerText>
+            </dataField>
+            <dataField fieldName="Age90" columns="15" textMode="Static">
+              <headerText>90 Days</headerText>
+            </dataField>
+            <dataField fieldName="Age120" columns="15" textMode="Static">
+              <headerText>120 Days</headerText>
+            </dataField>
+            <dataField fieldName="Age150" columns="15" textMode="Static">
+              <headerText>More 120 Days</headerText>
+            </dataField>
+          </dataFields>
+        </category>
+        <category tab="Address" id="c3" wrap="false" floating="false">
+          <dataFields>
+            <dataField fieldName="CAddress1" columns="50" textMode="Static">
+              <headerText>Address 1</headerText>
+            </dataField>
+            <dataField fieldName="CAddress2" columns="50" textMode="Static">
+              <headerText>Address 2</headerText>
+            </dataField>
+            <dataField fieldName="CAddress3" columns="50" textMode="Static">
+              <headerText>Address 3</headerText>
+            </dataField>
+            <dataField fieldName="CCity" columns="50" textMode="Static">
+              <headerText>City</headerText>
+            </dataField>
+            <dataField fieldName="CState" columns="50" textMode="Static">
+              <headerText>State</headerText>
+            </dataField>
+            <dataField fieldName="CZip" columns="10" textMode="Static">
+              <headerText>Post Code</headerText>
+            </dataField>
+            <dataField fieldName="CCountry" columns="50" textMode="Static">
+              <headerText>Country</headerText>
+            </dataField>
+            <dataField fieldName="PhoneNum" columns="20" textMode="Static" />
+            <dataField fieldName="FaxNum" columns="20" textMode="Static" />
+          </dataFields>
+        </category>
+        <category tab="Ship Address" id="c5" wrap="false" floating="false">
+          <dataFields>
+            <dataField fieldName="SAddress1" columns="50" textMode="Static">
+              <headerText>Address 1</headerText>
+            </dataField>
+            <dataField fieldName="SAddress2" columns="50" textMode="Static">
+              <headerText>Address 2</headerText>
+            </dataField>
+            <dataField fieldName="SAddress3" columns="50" textMode="Static">
+              <headerText>Address 3</headerText>
+            </dataField>
+            <dataField fieldName="SCity" columns="50" textMode="Static">
+              <headerText>City</headerText>
+            </dataField>
+            <dataField fieldName="SState" columns="50" textMode="Static">
+              <headerText>State</headerText>
+            </dataField>
+            <dataField fieldName="SZip" columns="10" textMode="Static">
+              <headerText>Post Code</headerText>
+            </dataField>
+            <dataField fieldName="SCountry" columns="50" textMode="Static">
+              <headerText>Country</headerText>
+            </dataField>
+            <dataField fieldName="SPhoneNum" columns="20" textMode="Static" />
+            <dataField fieldName="SFaxNum" columns="20" textMode="Static" />
+          </dataFields>
+        </category>
+        <category headerText="Comments" id="c2" wrap="true" tab="Instructions" floating="true">
+          <dataFields>
+            <dataField fieldName="OrderComments" rows="5" textMode="Static" />
+            <dataField fieldName="InternalRemarks" rows="5" textMode="Static" />
+            <dataField fieldName="PromotionRemarks" rows="5" textMode="Static" hidden="true" />
+          </dataFields>
+        </category>
+        <category headerText="Audit" id="c6" tab="Audit" floating="true">
+          <dataFields>
+            <dataField fieldName="Creator" columns="50" textMode="Static" />
+            <dataField fieldName="CreatedOn" columns="20" textMode="Static" />
+            <dataField fieldName="ModifiedBy" columns="50" textMode="Static" />
+            <dataField fieldName="ModifiedOn" columns="20" textMode="Static" />
+          </dataFields>
+        </category>
+        <category headerText="Details" id="c7" flow="NewRow">
+          <dataFields>
+            <dataField fieldName="OrderDtl" columns="15" />
+          </dataFields>
+        </category>
+        <category headerText="Reject Reasons" id="c8">
+          <dataFields>
+            <dataField fieldName="RejectedReason" columns="50" />
+            <dataField fieldName="RejectedRemarks" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Order" tags="modal-max-any">
+      <headerText />
+      <categories>
+        <category id="c1" headerText="Order" flow="NewColumn">
+          <description />
+          <dataFields>
+            <dataField fieldName="CompanyID" aliasFieldName="CompanyName" />
+            <dataField fieldName="CustSysRowID" columns="15" />
+            <dataField fieldName="CustNum" columns="15" />
+            <dataField fieldName="CustID" columns="20" />
+            <dataField fieldName="CustomerName" />
+            <dataField fieldName="ShipToSysRowID" columns="15" />
+            <dataField fieldName="ShipToName" columns="50" />
+            <dataField fieldName="BulkOrder" />
+            <dataField fieldName="OrderDate" columns="20" />
+            <dataField fieldName="ReqShipDate" columns="20" />
+            <dataField fieldName="OrderType" columns="50" />
+            <dataField fieldName="OrderStatusID" aliasFieldName="OrderStatusName" />
+            <dataField fieldName="Exception" />
+            <dataField fieldName="TotalAmount" columns="15" />
+            <dataField fieldName="ExceptionDtl" />
+            <dataField fieldName="EpiOrderNum" columns="15" hidden="true" textMode="Static" />
+            <dataField fieldName="EpiError" hidden="true" textMode="Static" />
+            <dataField fieldName="TargetReportingDate" columns="20" />
+          </dataFields>
+        </category>
+        <category tab="CustomerAddress" id="c3" floating="true" flow="NewRow">
+          <dataFields>
+            <dataField fieldName="CAddress1" columns="50" />
+            <dataField fieldName="CAddress2" columns="50" />
+            <dataField fieldName="CAddress3" columns="50" />
+            <dataField fieldName="CCity" columns="50" />
+            <dataField fieldName="CState" columns="50" />
+            <dataField fieldName="CZip" columns="10" />
+            <dataField fieldName="CCountry" columns="50" />
+          </dataFields>
+        </category>
+        <category tab="CustomerStatement" id="c5" floating="true">
+          <dataFields>
+            <dataField fieldName="Balance" columns="15" />
+            <dataField fieldName="CreditLimit" columns="15" />
+            <dataField fieldName="UnPaidInvoices" columns="15" />
+            <dataField fieldName="OutStandingOrders" columns="15" />
+            <dataField fieldName="UnPostedInvoices" columns="15" />
+            <dataField fieldName="AgeCurr" columns="15" />
+            <dataField fieldName="Age30" columns="15" />
+            <dataField fieldName="Age60" columns="15" />
+            <dataField fieldName="Age90" columns="15" />
+            <dataField fieldName="Age120" columns="15" />
+            <dataField fieldName="Age150" columns="15" />
+            <dataField fieldName="TermsExceed" />
+          </dataFields>
+        </category>
+        <category tab="ShipAddress" id="c4" floating="true">
+          <dataFields>
+            <dataField fieldName="SAddress1" columns="50" />
+            <dataField fieldName="SAddress2" columns="50" />
+            <dataField fieldName="SAddress3" columns="50" />
+            <dataField fieldName="SCity" columns="50" />
+            <dataField fieldName="SState" columns="50" />
+            <dataField fieldName="SZip" columns="10" />
+            <dataField fieldName="SCountry" columns="50" />
+            <dataField fieldName="SFaxNum" columns="20" textMode="Static" />
+            <dataField fieldName="SPhoneNum" columns="20" textMode="Static" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Comments" wrap="true" floating="true" flow="NewRow">
+          <dataFields>
+            <dataField fieldName="OrderComments" rows="5" />
+            <dataField fieldName="InternalRemarks" rows="5" />
+            <dataField fieldName="PromotionRemarks" rows="5" hidden="true" />
+          </dataFields>
+        </category>
+        <category headerText="Audit" id="c6" floating="true" flow="NewRow">
+          <dataFields>
+            <dataField fieldName="Owner" columns="50" />
+            <dataField fieldName="Creator" columns="50" />
+            <dataField fieldName="CreatedOn" columns="20" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" commandArgument="editForm1" />
+      <action commandName="Custom" commandArgument="ApproveOrder" headerText="Approve" id="a100" cssClass="material-icon-beenhere" />
+      <action commandName="Custom" commandArgument="RejectOrder" headerText="Reject" whenLastCommandName="Edit" id="a101" cssClass="material-icon-backspace" />
+      <action commandName="Custom" commandArgument="CustStReport" id="a103" headerText="Download Statement" cssClass="material-icon-archive" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenClientScript="this.hasDetails()" />
+      <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" commandArgument="createForm1" />
+      <action commandName="Custom" commandArgument="ApproveOrder" headerText="Approve" id="a100" />
+      <action commandName="Custom" commandArgument="RejectOrder" headerText="Reject" whenLastCommandName="Edit" id="a101" />
+      <action commandName="Custom" commandArgument="CustStReport" id="a103" headerText="Download Statement" whenLastCommandName="New" />
+      <action commandName="Custom" commandArgument="CustStReport" id="a102" headerText="Download Statement" whenLastCommandName="Edit" />
+      <action commandName="Custom" commandArgument="CustStReport" id="a104" headerText="Download Statement" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="Custom" headerText="Actions">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+      <action commandName="Custom" commandArgument="Approve" headerText="Approve" id="a100" />
+    </actionGroup>
+    <actionGroup id="ag100" scope="ActionBar" headerText="GlobalApprove" flat="true">
+      <action commandName="Custom" commandArgument="ApproveOrder" headerText="Global Approve" id="a100" cssClass="material-icon-beenhere" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="New" type="Code" phase="Execute" />
+    <rule id="r101" commandName="Calculate" commandArgument="CustSysRowID" type="Code" phase="After" />
+    <rule id="r102" commandName="Select" type="Code" phase="Execute" />
+    <rule id="r103" commandName="Insert" type="Sql" phase="Execute"><![CDATA[SET @Creator = @BusinessRules_UserName
+SET @CreatedOn = GETDATE()]]></rule>
+    <rule id="r104" commandName="Update" type="Sql" phase="Execute"><![CDATA[SET @ModifiedBy = @BusinessRules_UserName
+SET @ModifiedOn = GETDATE()]]></rule>
+    <rule id="r105" commandName="Custom" commandArgument="ApproveOrder" type="Code" phase="Execute" />
+    <rule id="r106" commandName="Custom" commandArgument="RejectOrder" type="Code" phase="Execute" />
+    <rule id="r109" commandName="Custom" commandArgument="CustStReport" type="Code" phase="Execute" />
+  </businessRules>
+</dataController>

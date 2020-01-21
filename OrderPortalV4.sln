@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "OrderPortalV4", "app\", "19C5A36C-341B-4613-A830-7A886D120CE1"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code On Time Items", "Code On Time Items", "{839CC0E9-CC5A-48DD-A239-D50BDF25E03A}"
+	ProjectSection(SolutionItems) = preProject
+		ClientLibrary.en-GB.txt = ClientLibrary.en-GB.txt
+		ClientLibrary.en-US.txt = ClientLibrary.en-US.txt
+		ClientLibrary.en.txt = ClientLibrary.en.txt
+		ClientLibrary.ms-MY.txt = ClientLibrary.ms-MY.txt
+		ClientLibrary.zh-SG.txt = ClientLibrary.zh-SG.txt
+		DataAquarium.Project.xml = DataAquarium.Project.xml
+		DataAquarium.Version.xml = DataAquarium.Version.xml
+		Sync.DESKTOP-91068-user.xml = Sync.DESKTOP-91068-user.xml
+		Sync.DESKTOP-HB3J331-MY-COMPUTER.xml = Sync.DESKTOP-HB3J331-MY-COMPUTER.xml
+		Sync.FINSOFT-CALVIN-Admin.xml = Sync.FINSOFT-CALVIN-Admin.xml
+		Sync.LAPTOP-6PT1KV72-bunga.xml = Sync.LAPTOP-6PT1KV72-bunga.xml
+		Sync.LAPTOP-7A9483LU-Dominic.xml = Sync.LAPTOP-7A9483LU-Dominic.xml
+	EndProjectSection
+EndProject

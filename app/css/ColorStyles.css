@@ -1,0 +1,22 @@
+﻿[data-field="TotalAmount"][data-control="label"] {
+    font-weight: bold;
+}
+[data-field="TotalAmount"][data-control="field"] {
+    font-weight: bold;
+    color: orangered;
+}
+[data-field="Amount"][data-control="label"] {
+    font-weight: bold;
+}
+[data-field="Amount"][data-control="field"] {
+    font-weight: bold;
+    color: orangered;
+}
+[data-field="Balance"][data-control="label"] {
+    font-weight: bold;
+}
+
+[data-field="Balance"][data-control="field"] {
+    font-weight: bold;
+    color: orangered;
+}

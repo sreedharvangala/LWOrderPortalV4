@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="OrderRelVw" label="OrderRelVw" conflictDetection="overwriteChanges" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"OrderRel"."OrderRelID" "OrderRelID"
+	,"OrderRel"."OrderHedID" "OrderHedID"
+	,"OrderHed"."CustID" "OrderHedCustID"
+	,"OrderHed"."BulkOrder" "OrderHedBulkOrder"
+	,"OrderRel"."OrderDtlID" "OrderDtlID"
+	,"OrderDtl"."PartNum" "OrderDtlPartNum"
+	,"OrderRel"."OrderRelQty" "OrderRelQty"
+	,"OrderRel"."FOCRelQty" "FocrelQty"
+	,"OrderRel"."ShipByDate" "ShipByDate"
+	,"OrderRel"."ShipToSysRowID" "ShipToSysRowID"
+	,"OrderRel"."ShipToName" "ShipToName"
+	,"OrderRel"."Seq" "Seq"
+from "dbo"."OrderRel" "OrderRel"
+	left join "dbo"."OrderHed" "OrderHed" on "OrderRel"."OrderHedID" = "OrderHed"."OrderHedID"
+	left join "dbo"."OrderDtl" "OrderDtl" on "OrderRel"."OrderDtlID" = "OrderDtl"."OrderDtlID"
+]]></text>
+    </command>
+    <command id="OrderRelIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="OrderRelID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="OrderRelID" type="Int32" allowNulls="false" isPrimaryKey="true" label="OrderRelID" readOnly="true" />
+    <field name="OrderHedID" type="Int32" allowNulls="false" label="OrderHedID" showInSummary="true">
+      <items style="Lookup" dataController="OrderHeader" newDataView="createForm1" dataValueField="OrderHedID" dataTextField="CustID" copy="OrderHedBulkOrder=BulkOrder" />
+    </field>
+    <field name="OrderHedCustID" type="String" readOnly="true" label="CustID" length="20" />
+    <field name="OrderHedBulkOrder" type="Boolean" readOnly="true" label="Order Hed Bulk Order" />
+    <field name="OrderDtlID" type="Int32" allowNulls="false" label="OrderDtlID" showInSummary="true">
+      <items style="Lookup" dataController="OrderDtl" newDataView="createForm1" dataValueField="OrderDtlID" dataTextField="PartNum" />
+    </field>
+    <field name="OrderDtlPartNum" type="String" readOnly="true" label="PartNum" length="50" />
+    <field name="OrderRelQty" type="Decimal" label="Release Qty" showInSummary="true" readOnly="true" />
+    <field name="FocrelQty" type="Decimal" label="FOC Qty" showInSummary="true" readOnly="true" />
+    <field name="ShipByDate" type="DateTime" label="Required Date" showInSummary="true" dataFormatString="d/M/yyyy" />
+    <field name="ShipToSysRowID" type="Guid" label="ShipTo" contextFields="Company=OHCompany, CustID=OHCustID">
+      <items style="Lookup" dataController="ShipTo" dataTextField="Name" dataValueField="SysRowID" copy="ShipToName=Name" />
+    </field>
+    <field name="ShipToName" type="String" label="ShipTo Name" length="250" />
+    <field name="Seq" type="Int32" label="Seq" />
+    <field name="OHCompany" type="String" label="OHCompany" isVirtual="true" length="50" />
+    <field name="OHCustNum" type="Int32" label="OHCust Num" isVirtual="true" />
+    <field name="OHCustID" type="String" label="OHCust ID" isVirtual="true" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Order Rel" tags="view-style-grid ">
+      <headerText />
+      <dataFields>
+        <dataField fieldName="OrderHedID" aliasFieldName="OrderHedCustID" />
+        <dataField fieldName="OrderHedBulkOrder" />
+        <dataField fieldName="OrderDtlID" aliasFieldName="OrderDtlPartNum" />
+        <dataField fieldName="OrderRelQty" columns="15" aggregate="Sum" />
+        <dataField fieldName="FocrelQty" columns="15" aggregate="Sum" />
+        <dataField fieldName="ShipByDate" columns="10" dataFormatString="d/M/yyyy" />
+        <dataField fieldName="ShipToName" />
+        <dataField fieldName="Seq" columns="15" hidden="true" />
+        <dataField fieldName="OHCompany" columns="50" />
+        <dataField fieldName="OHCustNum" columns="15" />
+        <dataField fieldName="OHCustID" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Order Rel">
+      <headerText />
+      <categories>
+        <category id="c1" headerText="Order Rel" flow="NewColumn">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="OrderHedID" aliasFieldName="OrderHedCustID" />
+            <dataField fieldName="OrderHedBulkOrder" />
+            <dataField fieldName="OrderDtlID" aliasFieldName="OrderDtlPartNum" />
+            <dataField fieldName="OrderRelQty" columns="15" />
+            <dataField fieldName="FocrelQty" columns="15" />
+            <dataField fieldName="ShipByDate" columns="10" dataFormatString="d/M/yyyy" />
+            <dataField fieldName="ShipToSysRowID" columns="15" />
+            <dataField fieldName="ShipToName" />
+            <dataField fieldName="Seq" columns="15" hidden="true" />
+            <dataField fieldName="OHCompany" columns="50" hidden="true" />
+            <dataField fieldName="OHCustNum" columns="15" hidden="true" />
+            <dataField fieldName="OHCustID" columns="50" hidden="true" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Order Rel">
+      <headerText />
+      <categories>
+        <category id="c1" flow="NewColumn">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="OrderHedID" aliasFieldName="OrderHedCustID" />
+            <dataField fieldName="OrderHedBulkOrder" />
+            <dataField fieldName="OrderDtlID" aliasFieldName="OrderDtlPartNum" />
+            <dataField fieldName="OrderRelQty" columns="15" />
+            <dataField fieldName="FocrelQty" columns="15" />
+            <dataField fieldName="ShipByDate" columns="10" dataFormatString="d/M/yyyy" />
+            <dataField fieldName="ShipToSysRowID" columns="15" />
+            <dataField fieldName="ShipToName" />
+            <dataField fieldName="Seq" columns="15" hidden="true" />
+            <dataField fieldName="OHCompany" columns="50" />
+            <dataField fieldName="OHCustNum" columns="15" />
+            <dataField fieldName="OHCustID" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenClientScript="this.hasDetails()" />
+      <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Select" type="Sql" phase="Execute"><![CDATA[SELECT @OHCompany = b.CompanyName, @OHCustNum = a.CustNum, @OHCustID=a.CustID 
+FROM OrderHed a
+INNER JOIN Company b
+ON a.CompanyID=b.CompanyID
+WHERE A.OrderHedID=@OrderHedID]]></rule>
+  </businessRules>
+</dataController>

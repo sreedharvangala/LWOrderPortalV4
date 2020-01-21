@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode title="^SiteHome^Home^SiteHome^" description="" url="~/index.html">
+    <siteMapNode title="^HomePath^Home^HomePath^" description="^HomeDesc^Application home page^HomeDesc^" url="~/pages/home" cssClass="Wide" device="touch" />
+    <siteMapNode title="Setup" description="" url="~/pages/setup" roles="Administrators">
+      <siteMapNode title="Customer" description="View Customer" url="~/pages/customer" roles="Administrators" />
+      <siteMapNode title="Company" description="View Company" url="~/pages/company" roles="Administrators" />
+      <siteMapNode title="Part" description="View Part" url="~/pages/part" roles="Administrators" />
+      <siteMapNode title="Price List" description="View Price List" url="~/pages/price-list" roles="Administrators" />
+      <siteMapNode title="Ship To" description="View Ship To" url="~/pages/ship-to" roles="Administrators" />
+      <siteMapNode title="Order Status" description="" url="~/pages/order-status" roles="Administrators" />
+      <siteMapNode title="Order Exception Codes" description="View Order Exception Codes" url="~/pages/order-exception-codes" roles="Administrators" />
+    </siteMapNode>
+    <siteMapNode title="^Order^Order^Order^" description="View Order Header" url="~/pages/order" roles="SalesPerson, Administrators, SalesClerk" cssClass="material-icon-assignment" />
+    <siteMapNode title="Sales Target" description="View Sales Target" url="~/pages/sales-target" roles="Administrators" />
+    <siteMapNode title="Site Content" description="View Site Content" url="~/pages/site-content" roles="Administrators, Content Editors, Developers" />
+    <siteMapNode title="^Approve^Approve^Approve^" description="" url="~/pages/approve" roles="SalesManager, MarketingManager,Administrators" cssClass="material-icon-create" />
+    <siteMapNode title="Promotion" description="View Campaign" url="~/pages/promotion-v2" roles="*" />
+    <siteMapNode title="External Website" description="" url="http://codeontime.com" />
+    <siteMapNode title="Member Ship" description="" url="~/pages/member-ship" roles="*" />
+  </siteMapNode>
+</siteMap>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Users" alias="Users" created="2019-06-18T11:49:54" modified="2019-07-29T11:01:52" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="Manager" parentTableSchema="dbo" parentTableName="Users" x="298" y="20">
+      <foreignKeyColumn columnName="ManagerID" parentColumnName="UserID" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="UserID" fieldName="UserID" label="User ID" sortOrder="1" sortType="Ascending" />
+    <column name="UserName" fieldName="UserName" label="User Name" />
+    <column name="Password" fieldName="Password" label="Password" />
+    <column name="FullName" fieldName="FullName" label="Full Name" />
+    <column name="Email" fieldName="Email" label="Email" />
+    <column name="ManagerID" fieldName="ManagerID" label="Manager ID" aliasColumnName="UserName" aliasForeignKey="Manager" />
+    <column name="UserName" fieldName="ManagerUserName" label="Manager Name" foreignKey="Manager" />
+    <column name="Phone" fieldName="Phone" label="Phone" />
+    <column name="UserActivation" fieldName="UserActivation" label="User Activation" />
+  </columns>
+</dataModel>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?><logs><log type="Controllers"><c y="NodeSet" t="2019-12-09T10:19:59"><controller name="OrderRel" />
+<view id="editForm1" />
+<dataField fieldName="OHCompany" />
+<update>
+  <DataViewShowInSummary>false</DataViewShowInSummary>
+</update></c><c y="NodeSet" t="2019-12-09T10:36:27"><controller name="OrderRelVw" />
+<view id="editForm1" />
+<dataField fieldName="OHCompany" />
+<update>
+  <Hidden>true</Hidden>
+  <DataViewShowInSummary>false</DataViewShowInSummary>
+</update></c><c y="NodeSet" t="2019-12-09T10:36:35"><controller name="OrderRelVw" />
+<view id="editForm1" />
+<dataField fieldName="OHCustNum" />
+<update>
+  <Hidden>true</Hidden>
+  <DataViewShowInSummary>false</DataViewShowInSummary>
+</update></c><c y="NodeSet" t="2019-12-09T10:36:41"><controller name="OrderRelVw" />
+<view id="editForm1" />
+<dataField fieldName="OHCustID" />
+<update>
+  <Hidden>true</Hidden>
+  <DataViewShowInSummary>false</DataViewShowInSummary>
+</update></c><c y="NodeSet" t="2019-12-09T10:39:12"><controller name="OrderRelVw" />
+<field name="FocrelQty" />
+<update>
+  <ReadOnly>true</ReadOnly>
+</update></c><c y="NodeSet" t="2019-12-09T10:39:31"><controller name="OrderRelVw" />
+<field name="OrderRelQty" />
+<update>
+  <ReadOnly>true</ReadOnly>
+</update></c><c y="NodeSet" t="2020-01-10T14:59:42"><controller name="OrderRelVw" />
+<field name="ShipToSysRowID" />
+<update>
+  <Copy>ShipToName=ShipToName</Copy>
+</update></c><c y="NodeSet" t="2020-01-10T15:00:34"><controller name="OrderRelVw" />
+<field name="ShipToSysRowID" />
+<update>
+  <Copy>ShipToName=Name</Copy>
+</update></c><c y="NodeSet" t="2020-01-10T18:08:57"><controller name="OrdersWaitingForPriceChange" />
+<move>
+  <controller name="OrderRel" />
+</move></c><c y="NodeSet" t="2020-01-10T18:09:39"><controller name="OrdersWaitingForPriceChange" />
+<field name="OrderRel" />
+<delete /></c><c y="NodeSet" t="2020-01-10T18:11:48"><controller name="OrderDtlVw" />
+<move>
+  <controller name="OrderRel" />
+</move></c><c y="NodeSet" t="2020-01-10T18:12:00"><controller name="OrderDtlVw" />
+<view id="editForm1" />
+<category id="c1" />
+<move>
+  <controller name="OrderDtlVw" />
+  <field name="OrderRel" />
+</move></c><c y="NodeSet" t="2020-01-10T18:14:49"><controller name="OrderDtlVw" />
+<view id="editForm1" />
+<category id="c1" />
+<dataField fieldName="OrderRelVw" />
+<delete /></c><c y="NodeSet" t="2020-01-13T09:50:05"><controller name="OrderDtlVw2" />
+<field name="CtnConv" />
+<update>
+  <DataFormatString />
+</update></c><c y="NodeSet" t="2020-01-13T09:52:20"><controller name="OrderDtlVw" />
+<field name="CtnConv" />
+<update>
+  <DataFormatString />
+</update></c><c y="NodeSet" t="2020-01-13T16:54:16"><controller name="OrderDtl" />
+<field name="OrderRel" />
+<update>
+  <DataViewFilterField2>OrderHedID</DataViewFilterField2>
+</update></c><c y="NodeSet" t="2020-01-13T16:56:32"><controller name="OrderDtlVw" />
+<field name="OrderRel" />
+<update>
+  <DataViewFilterFields>OrderHedID</DataViewFilterFields>
+</update></c><c y="NodeSet" t="2020-01-13T16:56:55"><controller name="OrderDtlVw" />
+<field name="OrderRel" />
+<update>
+  <DataViewFilterField2>OrderDtlID</DataViewFilterField2>
+</update></c><c y="NodeSet" t="2020-01-14T15:16:15"><controller name="OrderDtl" />
+<move>
+  <controller name="OrderRel" />
+</move></c><c y="NodeSet" t="2020-01-14T15:16:59"><controller name="OrderDtlVw" />
+<field name="OrderRel" />
+<update>
+  <DataViewFilterFields />
+  <DataViewFilterField2 />
+</update></c><c y="NodeSet" t="2020-01-14T15:17:13"><controller name="OrderDtlVw" />
+<field name="OrderRelVw" />
+<update>
+  <DataViewFilterFields />
+  <DataViewFilterField2 />
+</update></c><c y="NodeSet" t="2020-01-14T15:19:46"><controller name="OrderDtl" />
+<field name="OrderRel_1" />
+<delete /></c><c y="NodeSet" t="2020-01-14T15:20:15"><controller name="OrderDtlVw" />
+<field name="OrderRel" />
+<update>
+  <DataViewFilterFields>OrderDtlID</DataViewFilterFields>
+  <DataViewFilterField2>OrderHedID</DataViewFilterField2>
+</update></c><c y="NodeSet" t="2020-01-14T15:20:30"><controller name="OrderDtlVw" />
+<field name="OrderRelVw" />
+<update>
+  <DataViewFilterFields>OrderDtlID</DataViewFilterFields>
+</update></c><c y="NodeSet" t="2020-01-14T15:42:20"><controller name="OrdersWaitingForPriceChange" />
+<field name="OrderDtlVw2" />
+<delete /></c><c y="NodeSet" t="2020-01-16T10:43:17"><controller name="OrderDtlVw2" />
+<field name="ProposedSellingPrice" />
+<update>
+  <CausesCalculate>true</CausesCalculate>
+</update></c><c y="NodeSet" t="2020-01-16T10:43:57"><controller name="OrderDtlVw2" />
+<insert type="rule">
+  <Type>Code</Type>
+  <CommandName>Calculate</CommandName>
+  <CommandArgument>ProposedSellingPrice</CommandArgument>
+  <Phase>Execute</Phase>
+</insert></c><c y="NodeSet" t="2020-01-16T10:57:51"><controller name="OrderDtlVw2" />
+<rule id="r102" />
+<move>
+  <controller name="OrderDtlVw2" />
+  <rule id="r111" />
+</move></c><c y="NodeSet" t="2020-01-16T13:59:02"><controller name="OrdersWaitingForPriceChange" />
+<field name="OrderDtlVw2" />
+<update>
+  <CausesCalculate>true</CausesCalculate>
+</update></c></log><log type="Application"><c y="NodeSet" t="2019-12-08T18:49:32"><page name="PromotionV2" />
+<update>
+  <Roles>*</Roles>
+</update></c></log></logs>

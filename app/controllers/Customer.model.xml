@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="vwCustomer" alias="vwCustomer" created="2019-06-18T11:49:55" modified="2019-08-08T18:18:51" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="SysRowID" fieldName="SysRowID" label="SysRowID" primaryKey="true" />
+    <column name="Company" fieldName="Company" label="Company" sortType="Ascending" sortOrder="1" />
+    <column name="CustNum" fieldName="CustNum" label="CustNum" />
+    <column name="Name" fieldName="Name" label="Name" sortOrder="2" sortType="Ascending" />
+    <column name="Address1" fieldName="Address1" label="Address1" />
+    <column name="Address2" fieldName="Address2" label="Address2" />
+    <column name="Address3" fieldName="Address3" label="Address3" />
+    <column name="City" fieldName="City" label="City" />
+    <column name="State" fieldName="State" label="State" />
+    <column name="Zip" fieldName="Zip" label="Zip" />
+    <column name="Country" fieldName="Country" label="Country" />
+    <column name="CreditLimit" fieldName="CreditLimit" label="Credit Limit" />
+    <column name="Balance" fieldName="Balance" label="Balance" />
+    <column name="CreditLimit2" fieldName="CreditLimit2" label="Credit Limit2" />
+    <column name="UnPaidInvoices" fieldName="UnPaidInvoices" label="UnPaidInvoices" />
+    <column name="OutStandingOrders" fieldName="OutStandingOrders" label="OutStandingOrders" />
+    <column name="UnPostedInvoices" fieldName="UnPostedInvoices" label="UnPostedInvoices" />
+    <column name="AgeCurr" fieldName="AgeCurr" label="AgeCurr" />
+    <column name="Age30" fieldName="Age30" label="Age30" />
+    <column name="Age60" fieldName="Age60" label="Age60" />
+    <column name="Age90" fieldName="Age90" label="Age90" />
+    <column name="Age120" fieldName="Age120" label="Age120" />
+    <column name="Age150" fieldName="Age150" label="Age150" />
+    <column name="TermsExceed" fieldName="TermsExceed" label="Terms Exceed" />
+    <column name="SalesRepCode" fieldName="SalesRepCode" label="SalesRep" />
+    <column name="CustID" fieldName="CustID" label="Cust ID" />
+    <column name="PhoneNum" fieldName="PhoneNum" label="Phone Num" />
+    <column name="FaxNum" fieldName="FaxNum" label="Fax Num" />
+  </columns>
+</dataModel>

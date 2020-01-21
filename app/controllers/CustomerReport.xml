@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="CustomerReport" conflictDetection="overwriteChanges" label="CustomerReport" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands />
+  <fields>
+    <field name="IHCompany" type="String" allowNulls="false" label="IH Company" readOnly="true" length="8" showInSummary="true" />
+    <field name="IHCustNum" type="Int32" allowNulls="false" label="IH Cust Num" readOnly="true" showInSummary="true" />
+    <field name="IHInvoiceNum" type="Int32" label="IH Invoice Num" readOnly="true" showInSummary="true" />
+    <field name="IHInvoiceDate" type="DateTime" label="IH Invoice Date" readOnly="true" showInSummary="true" />
+    <field name="IHClosedDate" type="DateTime" label="IH Closed Date" readOnly="true" showInSummary="true" />
+    <field name="IHCreditMemo" type="Boolean" label="IH Credit Memo" readOnly="true" />
+    <field name="IHInvoiceSuffix" type="String" label="IH Invoice Suffix" readOnly="true" length="2" />
+    <field name="IHCheckRef" type="String" label="IH Check Ref" readOnly="true" length="50" />
+    <field name="IHPackNum" type="Int32" label="IH Pack Num" readOnly="true" />
+    <field name="IHDropShipPackSlip" type="String" label="IH Drop Ship Pack Slip" readOnly="true" length="20" />
+    <field name="IHPONum" type="String" label="IHPO Num" readOnly="true" length="50" />
+    <field name="IHInvoiceAmt" type="Decimal" label="IH Invoice Amt" readOnly="true" />
+    <field name="SrcType" type="String" allowNulls="false" label="Src Type" readOnly="true" length="6" />
+    <field name="CRPosted" type="Boolean" label="CR Posted" readOnly="true" />
+    <field name="CRPostTranAmt" type="Decimal" label="CR Post Tran Amt" readOnly="true" />
+    <field name="CRInvoiceRef" type="Int32" label="CR Invoice Ref" readOnly="true" />
+    <field name="CHCheckRef" type="String" allowQBE="false" allowSorting="false" label="CH Check Ref" readOnly="true" />
+    <field name="CRCheckRef" type="String" label="CR Check Ref" readOnly="true" length="50" />
+    <field name="CRTranType" type="String" label="CR Tran Type" readOnly="true" length="8" />
+    <field name="CRTranDate" type="DateTime" label="CR Tran Date" readOnly="true" />
+    <field name="CRTranAmt" type="Decimal" label="CR Tran Amt" readOnly="true" />
+    <field name="Debit" type="Decimal" label="Debit" readOnly="true" />
+    <field name="Credit" type="Decimal" label="Credit" readOnly="true" />
+    <field name="RunningBalance" type="Decimal" label="Running Balance" readOnly="true" />
+    <field name="Mnth_0" type="Decimal" label="Mnth 0" readOnly="true" />
+    <field name="Mnth_1" type="Decimal" label="Mnth 1" readOnly="true" />
+    <field name="Mnth_2" type="Decimal" label="Mnth 2" readOnly="true" />
+    <field name="Mnth_3" type="Decimal" label="Mnth 3" readOnly="true" />
+    <field name="Mnth_4" type="Decimal" label="Mnth 4" readOnly="true" />
+    <field name="Mnth_5" type="Decimal" label="Mnth 5" readOnly="true" />
+    <field name="Mnth_6" type="Decimal" label="Mnth 6" readOnly="true" />
+    <field name="Mnth_7" type="Decimal" label="Mnth 7" readOnly="true" />
+    <field name="Mnth_8" type="Decimal" label="Mnth 8" readOnly="true" />
+    <field name="Mnth_9" type="Decimal" label="Mnth 9" readOnly="true" />
+    <field name="Mnth_10" type="Decimal" label="Mnth 10" readOnly="true" />
+    <field name="Mnth_11" type="Decimal" label="Mnth 11" readOnly="true" />
+    <field name="CustId" type="String" label="Cust#" length="10" allowNulls="false" isPrimaryKey="true" />
+    <field name="CustName" type="String" label="Cust Name" length="50" />
+    <field name="CustAddr" type="String" allowNulls="false" label="Cust Addr" readOnly="true" length="317" />
+    <field name="CustPhone" type="String" allowNulls="false" label="Cust Phone" readOnly="true" length="129" />
+    <field name="CustFax" type="String" label="Cust Fax" length="20" />
+    <field name="CompName" type="String" label="Comp Name" length="50" />
+    <field name="CompAddr1" type="String" label="Comp Addr1" length="50" />
+    <field name="CompAddr2" type="String" label="Comp Addr2" length="50" />
+    <field name="CompAddr3" type="String" label="Comp Addr3" length="50" />
+    <field name="CompCity" type="String" label="Comp City" length="50" />
+    <field name="CompState" type="String" label="Comp State" length="50" />
+    <field name="CompZip" type="String" label="Comp Zip" length="10" />
+    <field name="CompCountry" type="String" label="Comp Country" length="50" />
+    <field name="CompPhone" type="String" label="Comp Phone" length="20" />
+    <field name="CompFax" type="String" label="Comp Fax" length="20" />
+    <field name="CompGSTRegNo" type="String" label="Comp GST Reg No" length="20" />
+    <field name="TermsDesc" type="String" label="Terms Desc" length="30" />
+    <field name="CustSalesRep" type="String" label="Cust Sales Rep" length="30" />
+    <field name="InputDate" type="DateTime" label="Input Date" readOnly="true" />
+    <field name="RptDate" type="DateTime" label="Rpt Date" readOnly="true" />
+    <field name="RptRefNo" type="String" allowQBE="false" allowSorting="false" label="Rpt Ref No" readOnly="true" />
+    <field name="RptDescription" type="String" label="Rpt Description" readOnly="true" length="69" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Customer Report">
+      <headerText />
+      <dataFields>
+        <dataField fieldName="IHCompany" columns="8" />
+        <dataField fieldName="IHCustNum" columns="15" />
+        <dataField fieldName="IHInvoiceNum" columns="15" />
+        <dataField fieldName="IHInvoiceDate" columns="10" />
+        <dataField fieldName="IHClosedDate" columns="10" />
+        <dataField fieldName="IHCreditMemo" />
+        <dataField fieldName="IHInvoiceSuffix" columns="2" />
+        <dataField fieldName="IHCheckRef" columns="50" />
+        <dataField fieldName="IHPackNum" columns="15" />
+        <dataField fieldName="IHDropShipPackSlip" columns="20" />
+        <dataField fieldName="IHPONum" columns="50" />
+        <dataField fieldName="IHInvoiceAmt" columns="15" />
+        <dataField fieldName="SrcType" columns="6" />
+        <dataField fieldName="CRPosted" />
+        <dataField fieldName="CRPostTranAmt" columns="15" />
+        <dataField fieldName="CRInvoiceRef" columns="15" />
+        <dataField fieldName="CHCheckRef" rows="5" />
+        <dataField fieldName="CRCheckRef" columns="50" />
+        <dataField fieldName="CRTranType" columns="8" />
+        <dataField fieldName="CRTranDate" columns="10" />
+        <dataField fieldName="CRTranAmt" columns="15" />
+        <dataField fieldName="Debit" columns="15" />
+        <dataField fieldName="Credit" columns="15" />
+        <dataField fieldName="RunningBalance" columns="15" />
+        <dataField fieldName="Mnth_0" columns="15" />
+        <dataField fieldName="Mnth_1" columns="15" />
+        <dataField fieldName="Mnth_2" columns="15" />
+        <dataField fieldName="Mnth_3" columns="15" />
+        <dataField fieldName="Mnth_4" columns="15" />
+        <dataField fieldName="Mnth_5" columns="15" />
+        <dataField fieldName="Mnth_6" columns="15" />
+        <dataField fieldName="Mnth_7" columns="15" />
+        <dataField fieldName="Mnth_8" columns="15" />
+        <dataField fieldName="Mnth_9" columns="15" />
+        <dataField fieldName="Mnth_10" columns="15" />
+        <dataField fieldName="Mnth_11" columns="15" />
+        <dataField fieldName="CustId" columns="10" />
+        <dataField fieldName="CustName" columns="50" />
+        <dataField fieldName="CustAddr" />
+        <dataField fieldName="CustPhone" />
+        <dataField fieldName="CustFax" columns="20" />
+        <dataField fieldName="CompName" columns="50" />
+        <dataField fieldName="CompAddr1" columns="50" />
+        <dataField fieldName="CompAddr2" columns="50" />
+        <dataField fieldName="CompAddr3" columns="50" />
+        <dataField fieldName="CompCity" columns="50" />
+        <dataField fieldName="CompState" columns="50" />
+        <dataField fieldName="CompZip" columns="10" />
+        <dataField fieldName="CompCountry" columns="50" />
+        <dataField fieldName="CompPhone" columns="20" />
+        <dataField fieldName="CompFax" columns="20" />
+        <dataField fieldName="CompGSTRegNo" columns="20" />
+        <dataField fieldName="TermsDesc" columns="30" />
+        <dataField fieldName="CustSalesRep" columns="30" />
+        <dataField fieldName="InputDate" columns="10" />
+        <dataField fieldName="RptDate" columns="10" />
+        <dataField fieldName="RptRefNo" rows="5" />
+        <dataField fieldName="RptDescription" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Customer Report">
+      <headerText />
+      <categories>
+        <category id="c1" headerText="Customer Report" flow="NewColumn">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IHCompany" columns="8" />
+            <dataField fieldName="IHCustNum" columns="15" />
+            <dataField fieldName="IHInvoiceNum" columns="15" />
+            <dataField fieldName="IHInvoiceDate" columns="10" />
+            <dataField fieldName="IHClosedDate" columns="10" />
+            <dataField fieldName="IHCreditMemo" />
+            <dataField fieldName="IHInvoiceSuffix" columns="2" />
+            <dataField fieldName="IHCheckRef" columns="50" />
+            <dataField fieldName="IHPackNum" columns="15" />
+            <dataField fieldName="IHDropShipPackSlip" columns="20" />
+            <dataField fieldName="IHPONum" columns="50" />
+            <dataField fieldName="IHInvoiceAmt" columns="15" />
+            <dataField fieldName="SrcType" columns="6" />
+            <dataField fieldName="CRPosted" />
+            <dataField fieldName="CRPostTranAmt" columns="15" />
+            <dataField fieldName="CRInvoiceRef" columns="15" />
+            <dataField fieldName="CHCheckRef" rows="5" />
+            <dataField fieldName="CRCheckRef" columns="50" />
+            <dataField fieldName="CRTranType" columns="8" />
+            <dataField fieldName="CRTranDate" columns="10" />
+            <dataField fieldName="CRTranAmt" columns="15" />
+            <dataField fieldName="Debit" columns="15" />
+            <dataField fieldName="Credit" columns="15" />
+            <dataField fieldName="RunningBalance" columns="15" />
+            <dataField fieldName="Mnth_0" columns="15" />
+            <dataField fieldName="Mnth_1" columns="15" />
+            <dataField fieldName="Mnth_2" columns="15" />
+            <dataField fieldName="Mnth_3" columns="15" />
+            <dataField fieldName="Mnth_4" columns="15" />
+            <dataField fieldName="Mnth_5" columns="15" />
+            <dataField fieldName="Mnth_6" columns="15" />
+            <dataField fieldName="Mnth_7" columns="15" />
+            <dataField fieldName="Mnth_8" columns="15" />
+            <dataField fieldName="Mnth_9" columns="15" />
+            <dataField fieldName="Mnth_10" columns="15" />
+            <dataField fieldName="Mnth_11" columns="15" />
+            <dataField fieldName="CustId" columns="10" />
+            <dataField fieldName="CustName" columns="50" />
+            <dataField fieldName="CustAddr" />
+            <dataField fieldName="CustPhone" />
+            <dataField fieldName="CustFax" columns="20" />
+            <dataField fieldName="CompName" columns="50" />
+            <dataField fieldName="CompAddr1" columns="50" />
+            <dataField fieldName="CompAddr2" columns="50" />
+            <dataField fieldName="CompAddr3" columns="50" />
+            <dataField fieldName="CompCity" columns="50" />
+            <dataField fieldName="CompState" columns="50" />
+            <dataField fieldName="CompZip" columns="10" />
+            <dataField fieldName="CompCountry" columns="50" />
+            <dataField fieldName="CompPhone" columns="20" />
+            <dataField fieldName="CompFax" columns="20" />
+            <dataField fieldName="CompGSTRegNo" columns="20" />
+            <dataField fieldName="TermsDesc" columns="30" />
+            <dataField fieldName="CustSalesRep" columns="30" />
+            <dataField fieldName="InputDate" columns="10" />
+            <dataField fieldName="RptDate" columns="10" />
+            <dataField fieldName="RptRefNo" rows="5" />
+            <dataField fieldName="RptDescription" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Customer Report">
+      <headerText />
+      <categories>
+        <category id="c1" headerText="New Customer Report" flow="NewColumn">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CustId" columns="10" />
+            <dataField fieldName="CustName" columns="50" />
+            <dataField fieldName="CustFax" columns="20" />
+            <dataField fieldName="CompName" columns="50" />
+            <dataField fieldName="CompAddr1" columns="50" />
+            <dataField fieldName="CompAddr2" columns="50" />
+            <dataField fieldName="CompAddr3" columns="50" />
+            <dataField fieldName="CompCity" columns="50" />
+            <dataField fieldName="CompState" columns="50" />
+            <dataField fieldName="CompZip" columns="10" />
+            <dataField fieldName="CompCountry" columns="50" />
+            <dataField fieldName="CompPhone" columns="20" />
+            <dataField fieldName="CompFax" columns="20" />
+            <dataField fieldName="CompGSTRegNo" columns="20" />
+            <dataField fieldName="TermsDesc" columns="30" />
+            <dataField fieldName="CustSalesRep" columns="30" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="SSRS" type="Grid" commandId="command1" label="Customer Report" reportTemplate="true">
+      <headerText />
+      <dataFields>
+        <dataField fieldName="IHCompany" columns="8" />
+        <dataField fieldName="IHCustNum" columns="15" />
+        <dataField fieldName="IHInvoiceNum" columns="15" />
+        <dataField fieldName="IHInvoiceDate" columns="10" />
+        <dataField fieldName="IHClosedDate" columns="10" />
+        <dataField fieldName="IHCreditMemo" />
+        <dataField fieldName="IHInvoiceSuffix" columns="2" />
+        <dataField fieldName="IHCheckRef" columns="50" />
+        <dataField fieldName="IHPackNum" columns="15" />
+        <dataField fieldName="IHDropShipPackSlip" columns="20" />
+        <dataField fieldName="IHPONum" columns="50" />
+        <dataField fieldName="IHInvoiceAmt" columns="15" />
+        <dataField fieldName="SrcType" columns="6" />
+        <dataField fieldName="CRPosted" />
+        <dataField fieldName="CRPostTranAmt" columns="15" />
+        <dataField fieldName="CRInvoiceRef" columns="15" />
+        <dataField fieldName="CHCheckRef" rows="5" />
+        <dataField fieldName="CRCheckRef" columns="50" />
+        <dataField fieldName="CRTranType" columns="8" />
+        <dataField fieldName="CRTranDate" columns="10" />
+        <dataField fieldName="CRTranAmt" columns="15" />
+        <dataField fieldName="Debit" columns="15" />
+        <dataField fieldName="Credit" columns="15" />
+        <dataField fieldName="RunningBalance" columns="15" />
+        <dataField fieldName="Mnth_0" columns="15" />
+        <dataField fieldName="Mnth_1" columns="15" />
+        <dataField fieldName="Mnth_2" columns="15" />
+        <dataField fieldName="Mnth_3" columns="15" />
+        <dataField fieldName="Mnth_4" columns="15" />
+        <dataField fieldName="Mnth_5" columns="15" />
+        <dataField fieldName="Mnth_6" columns="15" />
+        <dataField fieldName="Mnth_7" columns="15" />
+        <dataField fieldName="Mnth_8" columns="15" />
+        <dataField fieldName="Mnth_9" columns="15" />
+        <dataField fieldName="Mnth_10" columns="15" />
+        <dataField fieldName="Mnth_11" columns="15" />
+        <dataField fieldName="CustId" columns="10" />
+        <dataField fieldName="CustName" columns="50" />
+        <dataField fieldName="CustAddr" />
+        <dataField fieldName="CustPhone" />
+        <dataField fieldName="CustFax" columns="20" />
+        <dataField fieldName="CompName" columns="50" />
+        <dataField fieldName="CompAddr1" columns="50" />
+        <dataField fieldName="CompAddr2" columns="50" />
+        <dataField fieldName="CompAddr3" columns="50" />
+        <dataField fieldName="CompCity" columns="50" />
+        <dataField fieldName="CompState" columns="50" />
+        <dataField fieldName="CompZip" columns="10" />
+        <dataField fieldName="CompCountry" columns="50" />
+        <dataField fieldName="CompPhone" columns="20" />
+        <dataField fieldName="CompFax" columns="20" />
+        <dataField fieldName="CompGSTRegNo" columns="20" />
+        <dataField fieldName="TermsDesc" columns="30" />
+        <dataField fieldName="CustSalesRep" columns="30" />
+        <dataField fieldName="InputDate" columns="10" />
+        <dataField fieldName="RptDate" columns="10" />
+        <dataField fieldName="RptRefNo" rows="5" />
+        <dataField fieldName="RptDescription" />
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" commandArgument="editForm1" />
+      <action commandName="ReportAsPdf" headerText="Test Report" whenKeySelected="true" id="a100">
+        <data><![CDATA[_controller=CustomerReport
+_view=SSRS ]]></data>
+      </action>
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule type="Sql" id="enableResultSet" commandName="Select" phase="Before"><![CDATA[set @BusinessRules_EnableResultSet = 1
+-- Enable caching of the result set. Duration is specified in seconds.
+-- set @BusinessRules_ResultSetCacheDuration = 30 ]]></rule>
+    <rule type="Sql" id="getData" commandName="Select" phase="Before"><![CDATA[EXEC dbo.[FSC_CustSt_EM_V2] 
+    @Company = 'ADMSB',
+    @CustId = 'C1000034,C1000034',
+     @SalesRepCode=NULL,
+    @GroupCode=NULL, 
+    @CutOffDate = '2019-06-30']]></rule>
+    <rule type="Sql" id="insert" commandName="Insert" phase="Before"><![CDATA[set @BusinessRules_PreventDefault = 1
+-- implement insert here]]></rule>
+    <rule type="Sql" id="update" commandName="Update" phase="Before"><![CDATA[set @BusinessRules_PreventDefault = 1
+-- implement update here]]></rule>
+    <rule type="Sql" id="delete" commandName="Delete" phase="Before"><![CDATA[set @BusinessRules_PreventDefault = 1
+-- implement delete here]]></rule>
+  </businessRules>
+</dataController>

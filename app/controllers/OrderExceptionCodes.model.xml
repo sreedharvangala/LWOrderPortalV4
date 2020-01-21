@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="OrderExceptionCodes" alias="OrderExceptionCodes" created="2019-07-11T17:06:20" modified="2019-07-11T17:06:23" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="ExCodeID" fieldName="ExCodeID" label="Ex Code ID" />
+    <column name="ExceptionCode" fieldName="ExceptionCode" label="Exception Code" />
+    <column name="ExCodeDesc" fieldName="ExCodeDesc" label="Ex Code Desc" />
+    <column name="Active" fieldName="Active" label="Active" />
+  </columns>
+</dataModel>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="OrderStatusLog" alias="OrderStatusLog" created="2019-06-27T12:17:47" modified="2019-07-21T13:02:35" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="User" parentTableSchema="dbo" parentTableName="Users" x="316" y="411">
+      <foreignKeyColumn columnName="UserID" parentColumnName="UserID" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="LogID" fieldName="LogID" label="Log ID" sortType="Ascending" sortOrder="1" />
+    <column name="OrderHedID" fieldName="OrderHedID" label="Order Hed ID" />
+    <column name="UserID" fieldName="UserID" label="User ID" aliasColumnName="UserName" aliasForeignKey="User" />
+    <column name="UserName" fieldName="UserName" label="User Name" foreignKey="User" />
+    <column name="Comment" fieldName="Comment" label="Comment" />
+    <column name="RejectReason" fieldName="RejectReason" label="Reject Reason" />
+    <column name="OtherRemarks" fieldName="OtherRemarks" label="Other Remarks" />
+    <column name="TranDate" fieldName="TranDate" label="Tran Date" format="g" />
+  </columns>
+</dataModel>

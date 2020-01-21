@@ -1,0 +1,10 @@
+﻿
+.app-bar-toolbar .app-logo {
+    text-indent: -9999px;
+    width: 80px;
+    padding: 0;
+    background-image: url(/images/Image1.png);
+    background-color: #fff;
+    background-size: auto 42px;
+    background-position: center center;
+}

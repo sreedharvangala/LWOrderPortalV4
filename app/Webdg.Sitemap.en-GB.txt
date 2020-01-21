@@ -1,0 +1,9 @@
+﻿*******************************************************************************
+Your application uses this file to locate resource strings defined
+in Webdg.Sitemap project item. 
+
+Replace the text between localization brackets as needed.
+*******************************************************************************
+
+^Performance^Performace Dashboard^Performance^
+

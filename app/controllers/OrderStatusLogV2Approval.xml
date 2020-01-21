@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="OrderStatusLogV2Approval" label="OrderStatusLogV2Approval" conflictDetection="overwriteChanges" handler="Finsoft.Rules.OrderStatusLogV2ApprovalBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <fields>
+    <field name="RejectedRemarks" type="String" label="Rejected Remarks" length="500" />
+    <field name="RejectedReason" type="String" label="RejectedReason" length="500">
+      <items style="RadioButtonList">
+        <item value="Credit Over Limit" text="Credit Over Limit" />
+        <item value="Overdue" text="Overdue" />
+        <item value="WrongOrder" text="WrongOrder" />
+        <item value="Others" text="Others" />
+      </items>
+    </field>
+  </fields>
+  <businessRules>
+    <rule id="r100" commandName="New" type="Code" phase="Execute" />
+  </businessRules>
+  <views />
+  <actions />
+</dataController>

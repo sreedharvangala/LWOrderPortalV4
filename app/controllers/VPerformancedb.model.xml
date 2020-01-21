@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="V_PerformanceDB" alias="V_PerformanceDB" created="2019-07-07T20:39:45" modified="2019-07-20T21:13:07" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="CompanyName" fieldName="CompanyName" label="Company Name" />
+    <column name="UserName" fieldName="UserName" label="User Name" />
+    <column name="OrderDate" fieldName="OrderDate" label="Order Date" />
+    <column name="OrderQty" fieldName="OrderQty" label="Order Qty" />
+    <column name="OrderVal" fieldName="OrderVal" label="Order Val" />
+    <column name="PartNum" fieldName="PartNum" label="Part Num" />
+    <column name="PartDescription" fieldName="PartDescription" label="Part Description" />
+    <column name="Period" fieldName="Period" label="Period" />
+    <column name="Yr" fieldName="Yr" label="Yr" />
+    <column name="StatusName" fieldName="StatusName" label="Status Name" />
+    <column name="Customer" fieldName="Customer" label="Customer" />
+    <column name="CustID" fieldName="CustID" label="Cust ID" />
+    <column name="RecType" fieldName="RecType" label="Rec Type" />
+    <column name="UserName2" fieldName="UserName2" label="User Name 2" />
+    <column name="RoleName" fieldName="RoleName" label="Role Name" />
+    <column name="manager" fieldName="Manager" label="Manager" />
+    <column name="orderdate2" fieldName="Orderdate2" label="Orderdate 2" format="g" />
+  </columns>
+</dataModel>

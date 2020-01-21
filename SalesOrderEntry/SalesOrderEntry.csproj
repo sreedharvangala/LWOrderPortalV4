@@ -1,0 +1,675 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0793275F-55C2-49A0-AC6D-75C28D4353CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SalesOrderEntry</RootNamespace>
+    <AssemblyName>SalesOrderEntry</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SQLTool\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLTool, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SQLTool\SQLTool.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApprovalQueue.cs" />
+    <Compile Include="CommonClasses.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="CustomMessageInspector.cs" />
+    <Compile Include="Connected Services\svcSalesOrder\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\svcSession\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="EpiRequest.cs" />
+    <Compile Include="EpiResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SODtl.cs" />
+    <Compile Include="SOHd.cs" />
+    <Compile Include="SORel.cs" />
+    <Compile Include="Update.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\svcSalesOrder\SalesOrder.wsdl" />
+    <None Include="Connected Services\svcSalesOrder\SalesOrder.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrder1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrder2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrder3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrder4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrder5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrder6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrder7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.BOUpdErrorTableset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CCClearResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CCLoadTranDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CCProcessCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeBTCustIDMasterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeCardNumberResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeCCAmountsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeCommissionableResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeContractNumMasterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeContractNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeCounterSaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeCreditExpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeCurrencyCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangedCardNumberResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeDiscBreakListCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeDiscountAmountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeDiscountPercentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeERSOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeHedOTSCountryNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeHedUseOTSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeKitPricingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeKitQtyPerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeMakeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeManualTaxCalcResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeMiscAmountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeMiscCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeMiscPercentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeNeedByDateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeNewNeedByDateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeNewSellingQuantityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeODtlWarehouseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOrderDtlPWContractResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOrderRelBuyToOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOrderRelDropShipResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOrderRelMarkForNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOrderRelMFCustIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOrderRelPWContractResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOrderRelShipToContactResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOrderRelShipToCustIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOrderRelShipToResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOrderRelUseOTMFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOrderRelVendorIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeORelWarehouseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOverrideDiscPriceListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeOverridePriceListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangePartNumMasterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangePartNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangePlantResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangePriceListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangePricePerCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeProjectIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeQuickEntryOptionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeQuoteLineResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeQuoteQtyNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeRelUseOTSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeRenewalNbrMasterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeRenewalNbrResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeRevisionNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeRevNumMasterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeRMANumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeSalesRepResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeSalesUOMResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeSellingQtyMasterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeSellingQuantityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeSellingReqQtyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeShipToContactResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeShipToCustIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeShipToIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeSoldToContactResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeSoldToIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeUnitPriceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeVendorChangeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeWhseCodeMasterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ChangeXPartNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckCustomerCreditLimitResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckCustomerCreditReleaseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckCustOnCreditHoldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckLtrOfCrdtResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckOrderHedChangesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckOrderHedDispatchReasonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckPartRevisionChangeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckProjectIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckQuoteForCreditLimitResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckRateGrpCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckSellingFactorDirectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CheckSONumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CopyOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CreateGlbSugPOChgResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CreateLineMiscChargesFromQuoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CreateLinesFromHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.CreateOrderDtlComplementsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ECCUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ETCAddrValidationTableset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ETCValidateAddressResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetBasePartForConfigResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetGlbSugPOChgResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetInventoryQuantitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetJobProdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetKitComponentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetListCustomResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetNewOHOrderMscResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetNewOrderDtlAttchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetNewOrderDtlResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetNewOrderHedAttchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetNewOrderHedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetNewOrderHedUPSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetNewOrderMscResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetNewOrderRelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetNewOrderRelTaxResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetNewSalesKitResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetPayBTFlagDefaultsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetQuoteQtyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetRowsCustomerTrackerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetRowsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GetSmartStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GlbSugPOChgTableset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.GlbSugPOChgUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.MasterUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.NegativeInventoryTestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeARLOCIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeCreditCardOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeofBTConNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeofBTCustIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeOfFixedAmountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeOfMktgCampaignResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeOfMktgEvntResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeofPhaseIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeofSoldToCreditCheckResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeOfTaxAmtResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeOfTaxPercentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeofTaxRgnResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeRateCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeTaxableAmtResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OnChangeTaxCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OrdDtlQuoteQtyTableset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OrderCustTrkTableset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OrderDtlGetNewContractsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OrderDtlGetNewCounterSaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OrderDtlGetNewFromQuoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OrderHedListTableset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.OrdRelJobProdTableset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.PhantomComponentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ProcessCounterSaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ProcessQuickEntryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.RebuildShipUPSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.SalesOrderTableset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.SelectSerialNumbersParamsTableset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.SetReadyToCalcResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.SetUPSQVEnableResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.SOEntryUIParamsTableset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.SubmitNewOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.UpdateExtResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.UpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.UpdExtSalesOrderTableset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ValidateCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ValidateInvQtyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ValidateProjectIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderEntry.svcSalesOrder.ValidateSNsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSalesOrder\SalesOrderSvcFacade.wsdl" />
+    <None Include="Connected Services\svcSession\SalesOrderEntry.svcSession.GetCurrentValuesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSession\SalesOrderEntry.svcSession.GetLicenseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSession\SalesOrderEntry.svcSession.SessionModTableset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSession\SalesOrderEntry.svcSession.SetCompanyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSession\SalesOrderEntry.svcSession.SyncResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcSession\SessionMod.wsdl" />
+    <None Include="Connected Services\svcSession\SessionMod.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSession\SessionMod1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSession\SessionMod2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSession\SessionMod3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSession\SessionMod4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSession\SessionMod5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSession\SessionMod6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSession\SessionMod7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSession\SessionMod8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcSession\SessionModSvcFacade.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\svcSalesOrder\" />
+    <WCFMetadataStorage Include="Connected Services\svcSession\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcSession\SessionMod.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcSession\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcSession\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcSession\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcSalesOrder\SalesOrder.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcSalesOrder\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcSalesOrder\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcSalesOrder\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

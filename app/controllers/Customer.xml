@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Customer" conflictDetection="overwriteChanges" label="Customer" handler="Finsoft.Rules.CustomerBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"vwCustomer"."SysRowID" "SysRowID"
+	,"vwCustomer"."Company" "Company"
+	,"vwCustomer"."CustNum" "CustNum"
+	,"vwCustomer"."Name" "Name"
+	,"vwCustomer"."Address1" "Address1"
+	,"vwCustomer"."Address2" "Address2"
+	,"vwCustomer"."Address3" "Address3"
+	,"vwCustomer"."City" "City"
+	,"vwCustomer"."State" "State"
+	,"vwCustomer"."Zip" "Zip"
+	,"vwCustomer"."Country" "Country"
+	,"vwCustomer"."CreditLimit" "CreditLimit"
+	,"vwCustomer"."Balance" "Balance"
+	,"vwCustomer"."CreditLimit2" "CreditLimit2"
+	,"vwCustomer"."UnPaidInvoices" "UnPaidInvoices"
+	,"vwCustomer"."OutStandingOrders" "OutStandingOrders"
+	,"vwCustomer"."UnPostedInvoices" "UnPostedInvoices"
+	,"vwCustomer"."AgeCurr" "AgeCurr"
+	,"vwCustomer"."Age30" "Age30"
+	,"vwCustomer"."Age60" "Age60"
+	,"vwCustomer"."Age90" "Age90"
+	,"vwCustomer"."Age120" "Age120"
+	,"vwCustomer"."Age150" "Age150"
+	,"vwCustomer"."TermsExceed" "TermsExceed"
+	,"vwCustomer"."SalesRepCode" "SalesRepCode"
+	,"vwCustomer"."CustID" "CustID"
+	,"vwCustomer"."PhoneNum" "PhoneNum"
+	,"vwCustomer"."FaxNum" "FaxNum"
+from "dbo"."vwCustomer" "vwCustomer"
+order by "vwCustomer"."Company" asc, "vwCustomer"."Name" asc]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="SysRowID" type="Guid" isPrimaryKey="true" label="SysRowID" />
+    <field name="Company" type="String" allowNulls="false" label="Company" length="8" showInSummary="true" />
+    <field name="CustID" type="String" label="Cust ID" length="10" />
+    <field name="CustNum" type="Int32" allowNulls="false" label="CustNum" showInSummary="true" />
+    <field name="Name" type="String" label="Name" length="50" showInSummary="true" />
+    <field name="Address1" type="String" label="Address1" length="50" showInSummary="true" />
+    <field name="Address2" type="String" label="Address2" length="50" showInSummary="true" />
+    <field name="Address3" type="String" label="Address3" length="50" />
+    <field name="City" type="String" label="City" length="50" />
+    <field name="State" type="String" label="State" length="50" />
+    <field name="Zip" type="String" label="Zip" length="10" />
+    <field name="Country" type="String" label="Country" length="50" />
+    <field name="CreditLimit" type="Decimal" label="Credit Limit" />
+    <field name="Balance" type="Decimal" allowNulls="false" label="Balance" readOnly="true" />
+    <field name="CreditLimit2" type="Decimal" label="Credit Limit2" />
+    <field name="UnPaidInvoices" type="Decimal" allowNulls="false" label="UnPaidInvoices" readOnly="true" />
+    <field name="OutStandingOrders" type="Decimal" allowNulls="false" label="OutStandingOrders" readOnly="true" />
+    <field name="UnPostedInvoices" type="Decimal" allowNulls="false" label="UnPostedInvoices" readOnly="true" />
+    <field name="AgeCurr" type="Decimal" label="AgeCurr" />
+    <field name="Age30" type="Decimal" label="Age30" />
+    <field name="Age60" type="Decimal" label="Age60" />
+    <field name="Age90" type="Decimal" label="Age90" />
+    <field name="Age120" type="Decimal" label="Age120" />
+    <field name="Age150" type="Decimal" label="Age150" />
+    <field name="TermsExceed" type="Boolean" allowNulls="false" label="Terms Exceed" readOnly="true" />
+    <field name="SalesRepCode" type="String" label="SalesRep" length="8" />
+    <field name="PhoneNum" type="String" label="Phone Num" length="20" />
+    <field name="FaxNum" type="String" label="Fax Num" length="20" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Customer" sortExpression="Company asc, Name asc" tags="view-style-grid " filter="@ContextFields_ExCurUser is null Or SalesRepCode in (@ContextFields_ExCurUser)">
+      <headerText />
+      <dataFields>
+        <dataField fieldName="Company" columns="8" />
+        <dataField fieldName="CustID" columns="10" />
+        <dataField fieldName="Name" columns="50" />
+        <dataField fieldName="Address1" columns="50" />
+        <dataField fieldName="Address2" columns="50" />
+        <dataField fieldName="Address3" columns="50" />
+        <dataField fieldName="City" columns="50" />
+        <dataField fieldName="State" columns="50" />
+        <dataField fieldName="Zip" columns="10" />
+        <dataField fieldName="Country" columns="50" />
+        <dataField fieldName="CustNum" columns="15" />
+        <dataField fieldName="CreditLimit" columns="15" />
+        <dataField fieldName="Balance" columns="15" />
+        <dataField fieldName="CreditLimit2" columns="15">
+          <headerText>Calc CreditLimit</headerText>
+        </dataField>
+        <dataField fieldName="UnPaidInvoices" columns="15" />
+        <dataField fieldName="OutStandingOrders" columns="15" />
+        <dataField fieldName="UnPostedInvoices" columns="15" />
+        <dataField fieldName="AgeCurr" columns="15" />
+        <dataField fieldName="Age30" columns="15" />
+        <dataField fieldName="Age60" columns="15" />
+        <dataField fieldName="Age90" columns="15" />
+        <dataField fieldName="Age120" columns="15" />
+        <dataField fieldName="Age150" columns="15" />
+        <dataField fieldName="TermsExceed" />
+        <dataField fieldName="SalesRepCode" columns="8" />
+        <dataField fieldName="PhoneNum" columns="20" />
+        <dataField fieldName="FaxNum" columns="20" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Customer">
+      <headerText />
+      <categories>
+        <category id="c1" headerText="Customer" flow="NewColumn">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Company" columns="8" />
+            <dataField fieldName="CustID" columns="10" />
+            <dataField fieldName="Name" columns="50" />
+            <dataField fieldName="Address1" columns="50" />
+            <dataField fieldName="Address2" columns="50" />
+            <dataField fieldName="Address3" columns="50" />
+            <dataField fieldName="City" columns="50" />
+            <dataField fieldName="State" columns="50" />
+            <dataField fieldName="Zip" columns="10" />
+            <dataField fieldName="Country" columns="50" />
+            <dataField fieldName="CreditLimit" columns="15" />
+            <dataField fieldName="Balance" columns="15" />
+            <dataField fieldName="CreditLimit2" columns="15">
+              <headerText>Calc CreditLimit</headerText>
+            </dataField>
+            <dataField fieldName="UnPaidInvoices" columns="15" />
+            <dataField fieldName="OutStandingOrders" columns="15" />
+            <dataField fieldName="UnPostedInvoices" columns="15" />
+            <dataField fieldName="AgeCurr" columns="15" />
+            <dataField fieldName="Age30" columns="15" />
+            <dataField fieldName="Age60" columns="15" />
+            <dataField fieldName="Age90" columns="15" />
+            <dataField fieldName="Age120" columns="15" />
+            <dataField fieldName="Age150" columns="15" />
+            <dataField fieldName="TermsExceed" />
+            <dataField fieldName="SalesRepCode" columns="8" />
+            <dataField fieldName="PhoneNum" columns="20" />
+            <dataField fieldName="FaxNum" columns="20" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Customer">
+      <headerText />
+      <categories>
+        <category id="c1" flow="NewColumn">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Company" columns="8" />
+            <dataField fieldName="CustID" columns="10" />
+            <dataField fieldName="CustNum" columns="15" />
+            <dataField fieldName="Name" columns="50" />
+            <dataField fieldName="Address1" columns="50" />
+            <dataField fieldName="Address2" columns="50" />
+            <dataField fieldName="Address3" columns="50" />
+            <dataField fieldName="City" columns="50" />
+            <dataField fieldName="State" columns="50" />
+            <dataField fieldName="Zip" columns="10" />
+            <dataField fieldName="Country" columns="50" />
+            <dataField fieldName="CreditLimit" columns="15" />
+            <dataField fieldName="Balance" columns="15" />
+            <dataField fieldName="CreditLimit2" columns="15">
+              <headerText>Calc CreditLimit</headerText>
+            </dataField>
+            <dataField fieldName="UnPaidInvoices" columns="15" />
+            <dataField fieldName="OutStandingOrders" columns="15" />
+            <dataField fieldName="UnPostedInvoices" columns="15" />
+            <dataField fieldName="AgeCurr" columns="15" />
+            <dataField fieldName="Age30" columns="15" />
+            <dataField fieldName="Age60" columns="15" />
+            <dataField fieldName="Age90" columns="15" />
+            <dataField fieldName="Age120" columns="15" />
+            <dataField fieldName="Age150" columns="15" />
+            <dataField fieldName="TermsExceed" />
+            <dataField fieldName="SalesRepCode" columns="8" />
+            <dataField fieldName="PhoneNum" columns="20" />
+            <dataField fieldName="FaxNum" columns="20" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenClientScript="this.hasDetails()" />
+      <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Report" commandArgument="blank" type="Code" phase="Execute" />
+  </businessRules>
+</dataController>

@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="PerformanceDB" label="PerformanceDB" conflictDetection="overwriteChanges" xmlns="urn:schemas-codeontime-com:data-aquarium" />

@@ -1,0 +1,21 @@
+﻿{
+  "appName": "Order Portal",
+  "splash": {
+    "enable": true,
+   "logo": "/images/Image1.png",
+    "background": "/images/image8.jpg",
+    "duration": 2500
+  },
+  "setting": {
+    "option": {
+      "theme": false,
+      "transitions": true,
+      "sidebar": true,
+      "labelsInList": true,
+      "showSystemButton": true,
+      "promoteAction": true,
+      "smartDates": true,
+      "initialListMode": true
+    }
+  }
+}

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="SalesTarget" alias="SalesTarget" created="2019-07-18T15:08:30" modified="2019-07-20T14:02:47" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="User" parentTableSchema="dbo" parentTableName="Users" x="283" y="20">
+      <foreignKeyColumn columnName="UserID" parentColumnName="UserID" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="STID" fieldName="Stid" label="Stid" />
+    <column name="UserID" fieldName="UserID" label="User ID" aliasColumnName="UserName" aliasForeignKey="User" />
+    <column name="UserName" fieldName="UserName" label="User Name" foreignKey="User" />
+    <column name="Year" fieldName="Year" label="Year" />
+    <column name="January" fieldName="January" label="January" />
+    <column name="February" fieldName="February" label="February" />
+    <column name="March" fieldName="March" label="March" />
+    <column name="April" fieldName="April" label="April" />
+    <column name="May" fieldName="May" label="May" />
+    <column name="Jun" fieldName="Jun" label="Jun" />
+    <column name="July" fieldName="July" label="July" />
+    <column name="August" fieldName="August" label="August" />
+    <column name="September" fieldName="September" label="September" />
+    <column name="Oktober" fieldName="Oktober" label="Oktober" />
+    <column name="November" fieldName="November" label="November" />
+    <column name="December" fieldName="December" label="December" />
+    <column name="JanValue" fieldName="JanValue" label="Jan Value" />
+    <column name="FebValue" fieldName="FebValue" label="Feb Value" />
+    <column name="MarValue" fieldName="MarValue" label="Mar Value" />
+    <column name="AprValue" fieldName="AprValue" label="Apr Value" />
+    <column name="MayValue" fieldName="MayValue" label="May Value" />
+    <column name="JunValue" fieldName="JunValue" label="Jun Value" />
+    <column name="JulValue" fieldName="JulValue" label="Jul Value" />
+    <column name="AugValue" fieldName="AugValue" label="Aug Value" />
+    <column name="SepValue" fieldName="SepValue" label="Sep Value" />
+    <column name="OctValue" fieldName="OctValue" label="Oct Value" />
+    <column name="NovValue" fieldName="NovValue" label="Nov Value" />
+    <column name="DecValue" fieldName="DecValue" label="Dec Value" />
+  </columns>
+</dataModel>

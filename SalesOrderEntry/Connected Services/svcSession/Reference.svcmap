@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="abea608e-1bc2-4ff7-aebe-f727916f229c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SessionMod.xsd" MetadataType="Schema" ID="2d9eec93-cd01-4774-ab6e-a3fe9a8b0283" SourceId="1" SourceUrl="http://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?xsd=xsd4" />
+    <MetadataFile FileName="SessionMod.wsdl" MetadataType="Wsdl" ID="7aa0237e-4f78-4ab1-a3e6-6b017ccb8cf4" SourceId="1" SourceUrl="http://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="SessionModSvcFacade.wsdl" MetadataType="Wsdl" ID="73b33f7d-572e-42a9-bc24-3e8581f180c9" SourceId="1" SourceUrl="http://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?wsdl" />
+    <MetadataFile FileName="SessionMod1.xsd" MetadataType="Schema" ID="455aef93-7049-4599-be27-ca3af868b03f" SourceId="1" SourceUrl="http://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?xsd=xsd7" />
+    <MetadataFile FileName="SessionMod2.xsd" MetadataType="Schema" ID="af75e983-4ad1-4c52-ac2b-d17ce6d8172b" SourceId="1" SourceUrl="http://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?xsd=xsd0" />
+    <MetadataFile FileName="SessionMod.disco" MetadataType="Disco" ID="f9aec533-16c7-4560-ad2f-faf8379ccfa6" SourceId="1" SourceUrl="http://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?disco" />
+    <MetadataFile FileName="SessionMod3.xsd" MetadataType="Schema" ID="93b7a1ec-4740-4ea0-b4ef-db3d606bd6ea" SourceId="1" SourceUrl="http://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?xsd=xsd3" />
+    <MetadataFile FileName="SessionMod4.xsd" MetadataType="Schema" ID="6d90f28d-71c2-4d60-bed9-4944330cb9dd" SourceId="1" SourceUrl="http://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?xsd=xsd6" />
+    <MetadataFile FileName="SessionMod5.xsd" MetadataType="Schema" ID="4a4b9b0e-e2b2-4aaf-b505-52e4ca05030d" SourceId="1" SourceUrl="http://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?xsd=xsd2" />
+    <MetadataFile FileName="SessionMod6.xsd" MetadataType="Schema" ID="936bc870-04ca-4c48-86dd-108e9973d4af" SourceId="1" SourceUrl="http://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?xsd=xsd5" />
+    <MetadataFile FileName="SessionMod7.xsd" MetadataType="Schema" ID="d972f291-d26b-4f71-bd6d-3a68d8d64e97" SourceId="1" SourceUrl="http://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?xsd=xsd8" />
+    <MetadataFile FileName="SessionMod8.xsd" MetadataType="Schema" ID="cb5767b8-7b70-4a80-94c0-96bccdd2a962" SourceId="1" SourceUrl="http://nasae10server/EpicorPilot101/Ice/Lib/SessionMod.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
